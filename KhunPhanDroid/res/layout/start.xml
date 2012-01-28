@@ -1,0 +1,18 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+ <ImageView 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent"
+	android:src="@drawable/start_pic"
+	/>
+ <Button 
+	android:id="@+id/button_start_game" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:layout_marginBottom="20dip"
+    android:layout_gravity="center_horizontal|bottom"
+	android:text="@string/button_start_game" 
+	android:onClick="onClickStartGame"
+	/>
+
+</merge>

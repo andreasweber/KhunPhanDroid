@@ -1,0 +1,23 @@
+<menu xmlns:android=
+    "http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/opt_restart"
+    android:title="@string/menu_restart"
+    android:icon="@android:drawable/ic_menu_directions"
+  />  
+  <item
+    android:id="@+id/opt_sound"
+    android:title="@string/menu_sound_off"
+    android:icon="@android:drawable/ic_menu_info_details"
+  />
+  <item
+    android:id="@+id/opt_finish"
+    android:title="@string/menu_exit"
+    android:icon="@android:drawable/ic_menu_close_clear_cancel"
+  /> 
+  <item
+    android:id="@+id/opt_about"
+    android:title="@string/menu_about"
+    android:icon="@android:drawable/ic_menu_help"
+  /> 
+</menu>

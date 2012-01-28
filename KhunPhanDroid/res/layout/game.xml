@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GameLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_gravity="top" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:stretchColumns="1">
+	    <TableRow>
+	  	  	<TextView android:id="@+id/txt_moves"/>
+	  	  	<TextView android:id="@+id/txt_best_solution"
+	 				  android:gravity="right"/>
+	    </TableRow>
+	    <!-- for debugging 
+	    <TableRow>
+	    	<TextView android:text="Free Positions :"/>
+	    	<TextView android:id="@+id/txt_freepositions"/>
+	    </TableRow>
+	    -->
+    </TableLayout>
+    
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="260px" 
+		android:layout_height="320px" 
+		android:id="@+id/OuterBoardLayout" 
+		android:layout_marginBottom="20px"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:src="@drawable/background_outer"
+		/>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="120px" 
+			android:layout_height="10px"  
+			android:background="@color/black" 
+			android:layout_gravity="center_horizontal|bottom"/>
+	</FrameLayout>		
+		
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:layout_width="240px" 
+		android:layout_height="300px" 
+		android:id="@+id/InnerBoardLayout" 
+		android:layout_marginBottom="30px"
+		android:layout_gravity="center_horizontal|bottom">
+		<ImageView 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:src="@drawable/background_inner"
+		/>
+		<View android:background="@drawable/piece11_pic" 
+			android:layout_height="60px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece11_1" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece11_pic" 
+			android:layout_height="60px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece11_2" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece11_pic" 
+			android:layout_height="60px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece11_3" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece11_pic" 
+			android:layout_height="60px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece11_4" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="120px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece12_1" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="120px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece12_2" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="120px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece12_3" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="120px" 
+			android:layout_width="60px" 
+			android:id="@+id/Piece12_4" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece21_pic" 
+			android:layout_height="60px" 
+			android:layout_width="120px" 
+			android:id="@+id/Piece21" 
+			android:layout_gravity="top"> 
+		</View> 
+		<View android:background="@drawable/piece22_pic" 
+			android:layout_height="120px" 
+			android:layout_width="120px" 
+			android:id="@+id/Piece22" 
+			android:layout_gravity="top"> 
+		</View> 
+	</FrameLayout>
+	
+</FrameLayout>

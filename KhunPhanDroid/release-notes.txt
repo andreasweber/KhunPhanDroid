@@ -1,0 +1,12 @@
+
+Release 0.71 (in progress)
+------------
+TODO 
+- (A) Sound-on/off in Properties speichern
+- (C) Performance opt., Größe apk-Datei opt.
+- (C) Piece markieren dass gerade bewegt werden soll
+- (C) Bild als Hintergrund mit transparentem Start-Button in der Mitte
+   
+Release 0.7
+-----------
+- initial release

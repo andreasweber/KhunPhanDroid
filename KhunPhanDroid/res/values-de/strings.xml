@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    
+<string name="button_start_game">Starte Spiel</string>
+<string name="button_new_game">Neues Spiel</string>
+<string name="dialog_success">- Du hast es geschafft!!! -</string>
+<string name="menu_exit">Beenden</string>
+<string name="menu_restart">Zurück auf Anfang</string>
+
+
+
+<string name="menu_sound_on">Sound ein</string>
+<string name="menu_sound_off">Sound aus</string>
+
+
+<string name="menu_about">Über KhunPhanDroid</string>
+<string name="game_moves">Züge</string>
+<string name="game_best">Beste Lösung</string>
+<string name="dialog_help">Befreie Khun Phaen! Versuche den Stein aus der oberen Mitte zur unteren Öffnung zu bringen. Viel Erfolg!</string>
+</resources>

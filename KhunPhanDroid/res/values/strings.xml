@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">KhunPhanDroid</string>
+<string name="button_start_game">Start game</string>
+<string name="button_new_game">New game</string>
+<string name="dialog_success">- You got it!!! -</string>
+<string name="menu_exit">Exit</string>
+<string name="menu_restart">Back to start</string>
+
+
+
+<string name="menu_sound_on">Sound on</string>
+<string name="menu_sound_off">Sound off</string>
+
+
+<string name="menu_about">About KhunPhanDroid</string>
+<string name="game_moves">Moves</string>
+<string name="game_best">Best solution</string>
+
+<string name="dialog_about">KhunPhanDroid \n (c) Copyright 2011 \n Andreas Weber \n version</string>
+<string name="dialog_help">Free Khun Phaen! Try to move the big piece from the upper middle to the lower centre. Good luck!</string>
+</resources>
