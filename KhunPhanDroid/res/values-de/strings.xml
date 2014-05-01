@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    
+<string name="app_name">KhunPhanDroid</string>    
 <string name="button_start_game">Starte Spiel</string>
 <string name="button_new_game">Neues Spiel</string>
 <string name="dialog_success">- Du hast es geschafft!!! -</string>
@@ -17,5 +17,8 @@
 <string name="menu_about">Über KhunPhanDroid</string>
 <string name="game_moves">Züge</string>
 <string name="game_best">Beste Lösung</string>
-<string name="dialog_help">Befreie Khun Phaen! Versuche den Stein aus der oberen Mitte zur unteren Öffnung zu bringen. Viel Erfolg!</string>
+
+<string name="dialog_about">KhunPhanDroid \n (&#169;) Copyright 2011 \n Andreas Weber \n version</string>
+<string name="dialog_help">Free Khun Phaen! Try to move the big piece from the upper middle to the lower centre. Good luck!</string>
+
 </resources>

@@ -36,7 +36,9 @@ import aweber.phandroid.game.Piece22;
 public class GameActivity extends Activity {
 
 	public static final int EXIT_RETURN_CODE = 4711;
-	private static final int BOARD_FIELD_SIZE = 60;
+	
+	private static final int BOARD_FIELD_SIZE_DP = 60;
+	
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
 	private static final String PROP_BEST = "best"; // property where to store best solution
 
@@ -56,7 +58,8 @@ public class GameActivity extends Activity {
 	private MediaPlayer _playerMove, _playerSuccess; // to play sounds
 	private boolean _isSoundEnabled = true; // 'false' -> mute
 	private Properties _props;
-
+	
+	private int _board_field_size_px;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,6 +68,7 @@ public class GameActivity extends Activity {
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
+		_board_field_size_px = Math.round(BOARD_FIELD_SIZE_DP * getResources().getDisplayMetrics().density);
 		initBoard();
 	}
 
@@ -242,7 +246,7 @@ public class GameActivity extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_MOVE: { // move happend during pressed gesture
 					if (_isMoving) {
-						// showEventCoordinates(event);
+						showEventCoordinates(event);
 						// if (isEventWithinBoard(event)) {
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
 						boardLayoutParams.leftMargin = (int) event.getRawX() - boardLeft - (v.getWidth() / 2);
@@ -255,15 +259,15 @@ public class GameActivity extends Activity {
 				case MotionEvent.ACTION_UP: { // finished pressed gesture
 					if (_isMoving) {
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-						// showEventCoordinates(event);
+						showEventCoordinates(event);
 						// check if we are within board frame
 						if (isEventWithinBoard(event)) {
 							final BoardPos newPos = calculateNewPosition(event, v.getId());
 							if (_board.canMoveTo(v.getId(), newPos.x, newPos.y)) {
 								_board.move(v.getId(), newPos.x, newPos.y);
 								// object left margin to board frame = board field * board field size
-								boardLayoutParams.leftMargin = newPos.x * BOARD_FIELD_SIZE;
-								boardLayoutParams.topMargin = newPos.y * BOARD_FIELD_SIZE;
+								boardLayoutParams.leftMargin = newPos.x * _board_field_size_px;
+								boardLayoutParams.topMargin = newPos.y * _board_field_size_px;
 								_noOfMoves++;
 								showMoves();
 								// showFreePositions(); // for debugging
@@ -274,13 +278,13 @@ public class GameActivity extends Activity {
 								}
 							} else {
 								// we cannot move here -> place piece back on old position
-								boardLayoutParams.leftMargin = _oldPos.x * BOARD_FIELD_SIZE;
-								boardLayoutParams.topMargin = _oldPos.y * BOARD_FIELD_SIZE;
+								boardLayoutParams.leftMargin = _oldPos.x * _board_field_size_px;
+								boardLayoutParams.topMargin = _oldPos.y * _board_field_size_px;
 							}
 						} else {
 							// we are outside board frame -> place piece back on old position
-							boardLayoutParams.leftMargin = _oldPos.x * BOARD_FIELD_SIZE;
-							boardLayoutParams.topMargin = _oldPos.y * BOARD_FIELD_SIZE;
+							boardLayoutParams.leftMargin = _oldPos.x * _board_field_size_px;
+							boardLayoutParams.topMargin = _oldPos.y * _board_field_size_px;
 						}
 						v.setLayoutParams(boardLayoutParams);
 					}
@@ -312,8 +316,8 @@ public class GameActivity extends Activity {
 		final View v = findViewById(id);
 		v.setOnTouchListener(onTouch);
 		final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-		boardLayoutParams.leftMargin = p.xLeft * BOARD_FIELD_SIZE;
-		boardLayoutParams.topMargin = p.yTop * BOARD_FIELD_SIZE;
+		boardLayoutParams.leftMargin = p.xLeft * _board_field_size_px;
+		boardLayoutParams.topMargin = p.yTop * _board_field_size_px;
 		v.setLayoutParams(boardLayoutParams);
 	}
 
@@ -393,8 +397,8 @@ public class GameActivity extends Activity {
 		try {
 			// create property file not readable by other apps
 			propsOut = openFileOutput(PROPERTY_FILE_NAME, MODE_PRIVATE);
-			_props.save(propsOut, null);
-		} catch (FileNotFoundException e) {
+			_props.store(propsOut, null);
+		} catch (IOException e) {
 			e.printStackTrace(); // TODO can this happen? openFileOutput creates the file if it doesn't exist
 		} finally {
 			if (propsOut != null) {
@@ -493,8 +497,8 @@ public class GameActivity extends Activity {
 
 		final BoardPos result = new BoardPos(xOld, yOld);
 
-		float tendenceX = (event.getRawX() - _xRawOld) / BOARD_FIELD_SIZE;
-		float tendenceY = (event.getRawY() - _yRawOld) / BOARD_FIELD_SIZE;
+		float tendenceX = (event.getRawX() - _xRawOld) / _board_field_size_px;
+		float tendenceY = (event.getRawY() - _yRawOld) / _board_field_size_px;
 
 		if (Math.abs(tendenceX) > Math.abs(tendenceY)) {
 			int xDist = Math.round(tendenceX);
