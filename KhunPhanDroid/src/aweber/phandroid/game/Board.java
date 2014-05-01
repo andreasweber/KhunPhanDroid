@@ -38,12 +38,22 @@ public class Board {
 		return _pieceMap.values();
 	}
 
-	/**
-	 * @retrun 'true' if Piece can move at all.
-	 */
+	/** @return 'true' if Piece can move at all. */
 	public boolean canMove(int pieceId) {
 		Piece p = _pieceMap.get(pieceId);
 		return p.canMove(_free1, _free2);
+	}
+	
+	/** @return 'true' if Piece can move horizontally. */
+	public boolean canMoveX(int pieceId, int x, int y) {
+		Piece p = _pieceMap.get(pieceId);
+		return p.canMoveTo(_free1, _free2, x + 1, y) || p.canMoveTo(_free1, _free2, x - 1, y);
+	}
+	
+	/** @return 'true' if Piece can move vertically. */
+	public boolean canMoveY(int pieceId, int x, int y) {
+		Piece p = _pieceMap.get(pieceId);
+		return p.canMoveTo(_free1, _free2, x, y + 1) || p.canMoveTo(_free1, _free2, x, y - 1);
 	}
 
 	/**

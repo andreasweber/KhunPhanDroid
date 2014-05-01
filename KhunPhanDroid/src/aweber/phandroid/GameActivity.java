@@ -23,8 +23,8 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
 import aweber.phandroid.game.Board;
 import aweber.phandroid.game.BoardPos;
 import aweber.phandroid.game.Piece;
@@ -36,15 +36,15 @@ import aweber.phandroid.game.Piece22;
 public class GameActivity extends Activity {
 
 	public static final int EXIT_RETURN_CODE = 4711;
-	
+
 	private static final int BOARD_FIELD_SIZE_DP = 60;
-	
+
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
 	private static final String PROP_BEST = "best"; // property where to store best solution
 
 	private String _version; // the software version
 	private FrameLayout _boardLayout;
-	private int boardLeft, boardTop, boardBottom, boardRight; // board frame relative to parent frame
+	private int boardLeft, boardTop; // board frame relative to parent frame
 	private Board _board;
 	private Piece _piece11_1, _piece11_2, _piece11_3, _piece11_4, _piece12_1, _piece12_2, _piece12_3, _piece12_4,
 			_piece21, _piece22;
@@ -52,14 +52,17 @@ public class GameActivity extends Activity {
 	/** helper vars for move */
 	private BoardPos _oldPos; // object pos before move
 	private float _xRawOld, _yRawOld; // cursor pos on display before move
-	private boolean _isMoving = false; // are we currently in a move?
+	private boolean _isMoving; // are we currently in a move?
+	private boolean _canMoveX; // can we move horizontally in current move
+	private boolean _canMoveY; // can we move vertically in current move	
 	private int _noOfMoves;
 
 	private MediaPlayer _playerMove, _playerSuccess; // to play sounds
 	private boolean _isSoundEnabled = true; // 'false' -> mute
 	private Properties _props;
-	
+
 	private int _board_field_size_px;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -229,9 +232,7 @@ public class GameActivity extends Activity {
 
 			boardTop = _boardLayout.getTop();
 			boardLeft = _boardLayout.getLeft();
-			boardBottom = _boardLayout.getBottom();
-			boardRight = _boardLayout.getRight();
-
+		
 			switch (v.getId()) {// What is being touched
 			case R.id.Piece11_1:
 			case R.id.Piece11_2:
@@ -246,43 +247,47 @@ public class GameActivity extends Activity {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_MOVE: { // move happend during pressed gesture
 					if (_isMoving) {
-						showEventCoordinates(event);
-						// if (isEventWithinBoard(event)) {
+						
+						// for debugging:
+						//showEventCoordinates(event);
+						//showMoveTendency(event, v.getId());
+
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-						boardLayoutParams.leftMargin = (int) event.getRawX() - boardLeft - (v.getWidth() / 2);
-						boardLayoutParams.topMargin = (int) event.getRawY() - boardTop - v.getHeight();
+						if (_canMoveX) {
+							boardLayoutParams.leftMargin = (int) event.getRawX() - boardLeft - (v.getWidth() / 2);
+						}
+						if (_canMoveY) {
+							boardLayoutParams.topMargin = (int) event.getRawY() - boardTop - Math.round(v.getHeight());
+						}
 						v.setLayoutParams(boardLayoutParams);
-						// }
 					}
 					break;
 				}
 				case MotionEvent.ACTION_UP: { // finished pressed gesture
 					if (_isMoving) {
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-						showEventCoordinates(event);
+						
+						// for debugging:
+						//showEventCoordinates(event);
+						//showMoveTendency(event, v.getId());
+
 						// check if we are within board frame
-						if (isEventWithinBoard(event)) {
-							final BoardPos newPos = calculateNewPosition(event, v.getId());
-							if (_board.canMoveTo(v.getId(), newPos.x, newPos.y)) {
-								_board.move(v.getId(), newPos.x, newPos.y);
-								// object left margin to board frame = board field * board field size
-								boardLayoutParams.leftMargin = newPos.x * _board_field_size_px;
-								boardLayoutParams.topMargin = newPos.y * _board_field_size_px;
-								_noOfMoves++;
-								showMoves();
-								// showFreePositions(); // for debugging
-								if (_board.isSolution()) {
-									handleSuccess();
-								} else {
-									playMoveSound();
-								}
+						final BoardPos newPos = calculateNewPosition(event, v.getId());
+						if (_board.canMoveTo(v.getId(), newPos.x, newPos.y)) {
+							_board.move(v.getId(), newPos.x, newPos.y);
+							// object left margin to board frame = board field * board field size
+							boardLayoutParams.leftMargin = newPos.x * _board_field_size_px;
+							boardLayoutParams.topMargin = newPos.y * _board_field_size_px;
+							_noOfMoves++;
+							showMoves();
+							// showFreePositions(); // for debugging
+							if (_board.isSolution()) {
+								handleSuccess();
 							} else {
-								// we cannot move here -> place piece back on old position
-								boardLayoutParams.leftMargin = _oldPos.x * _board_field_size_px;
-								boardLayoutParams.topMargin = _oldPos.y * _board_field_size_px;
+								playMoveSound();
 							}
 						} else {
-							// we are outside board frame -> place piece back on old position
+							// we cannot move here -> place piece back on old position
 							boardLayoutParams.leftMargin = _oldPos.x * _board_field_size_px;
 							boardLayoutParams.topMargin = _oldPos.y * _board_field_size_px;
 						}
@@ -291,13 +296,24 @@ public class GameActivity extends Activity {
 					break;
 				}
 				case MotionEvent.ACTION_DOWN: { // started pressed gesture
-					if (_board.canMove(v.getId())) {
-						_oldPos = new BoardPos(_board.getXPos(v.getId()), _board.getYPos(v.getId()));
+					final int pieceId = v.getId();
+					if (_board.canMove(pieceId)) {
+						_oldPos = new BoardPos(_board.getXPos(pieceId), _board.getYPos(pieceId));
 						_xRawOld = event.getRawX();
 						_yRawOld = event.getRawY();
 						// TODO mark piece (e.g. different color)
 						// v.setLayoutParams(boardLayoutParams);
 						_isMoving = true;
+						if (_board.canMoveX(v.getId(), _oldPos.x, _oldPos.y)) {
+							_canMoveX = true;
+						} else {
+							_canMoveX = false;
+						}
+						if (_board.canMoveY(v.getId(), _oldPos.x, _oldPos.y)) {
+							_canMoveY = true;
+						} else {
+							_canMoveY = false;
+						}
 					} else {
 						_isMoving = false;
 					}
@@ -310,6 +326,63 @@ public class GameActivity extends Activity {
 			return true;
 		}
 	};
+
+	private BoardPos calculateNewPosition(MotionEvent event, int pieceId) {
+		int xOld = _board.getXPos(pieceId);
+		int yOld = _board.getYPos(pieceId);
+
+		final BoardPos result = new BoardPos(xOld, yOld);
+
+		float tendenceX = (event.getRawX() - _xRawOld) / _board_field_size_px;
+		float tendenceY = (event.getRawY() - _yRawOld) / _board_field_size_px;
+
+		if (_canMoveX && (!_canMoveY || Math.abs(tendenceX) > Math.abs(tendenceY))) {
+			int xDist = Math.round(tendenceX);
+			if (xDist >= 2) {
+				if (_board.canMoveTo(pieceId, xOld + 2, yOld)) {
+					xDist = 2;
+				} else {
+					xDist = 1;
+				}
+			} else if (xDist <= -2) {
+				if (_board.canMoveTo(pieceId, xOld - 2, yOld)) {
+					xDist = -2;
+				} else {
+					xDist = -1;
+				}
+			} else if (xDist == 0) {
+				if (tendenceX > 0.3) {
+					xDist = 1;
+				} else if (tendenceX < -0.3) {
+					xDist = -1;
+				}
+			}
+			result.x += xDist;
+		} else {
+			int yDist = Math.round(tendenceY);
+			if (yDist >= 2) {
+				if (_board.canMoveTo(pieceId, xOld, yOld + 2)) {
+					yDist = 2;
+				} else {
+					yDist = 1;
+				}
+			} else if (yDist <= -2) {
+				if (_board.canMoveTo(pieceId, xOld, yOld - 2)) {
+					yDist = -2;
+				} else {
+					yDist = -1;
+				}
+			} else if (yDist == 0) {
+				if (tendenceY > 0.3) {
+					yDist = 1;
+				} else if (tendenceY < -0.3) {
+					yDist = -1;
+				}
+			}
+			result.y += yDist;
+		}
+		return result;
+	}
 
 	private void addPiece(int id, Piece p) {
 		_board.addPiece(id, p);
@@ -465,6 +538,30 @@ public class GameActivity extends Activity {
 		aboutDialog.show();
 	}
 
+	/** for debugging... */
+	private void showFreePositions() {
+		// final TextView txtFreePos = (TextView) findViewById(R.id.txt_freepositions);
+		// txtFreePos.setText(board.getFreePosAsString());
+	}
+
+	/** for debugging.. */
+	private void showEventCoordinates(MotionEvent event) {
+		final TextView txtMoves = (TextView) findViewById(R.id.txt_moves);
+		txtMoves.setText("x: " + Math.round(event.getRawX() - boardLeft) + ", y:"
+				+ Math.round(event.getRawY() - boardTop));
+	}
+
+	/** for debugging.. */
+	private void showMoveTendency(MotionEvent event, int pieceId) {
+		int xOld = _board.getXPos(pieceId);
+		int yOld = _board.getYPos(pieceId);
+		final BoardPos oldPos = new BoardPos(xOld, yOld);
+		final BoardPos newPos = calculateNewPosition(event, pieceId);
+		final TextView txtMoves = (TextView) findViewById(R.id.txt_best_solution);
+		txtMoves.setText("old: " + oldPos + ", new: " + newPos);
+		txtMoves.setGravity(Gravity.RIGHT);
+	}
+
 	/** Gets the version from the Manifest. */
 	private String getVersion() {
 		try {
@@ -473,91 +570,6 @@ public class GameActivity extends Activity {
 		} catch (PackageManager.NameNotFoundException e) {
 		}
 		return "<unknown>";
-	}
-
-	/**
-	 * for debugging...
-	 */
-	private void showFreePositions() {
-		// final TextView txtFreePos = (TextView) findViewById(R.id.txt_freepositions);
-		// txtFreePos.setText(board.getFreePosAsString());
-	}
-
-	/**
-	 * for debugging...
-	 */
-	private void showEventCoordinates(MotionEvent event) {
-		final TextView txtMoves = (TextView) findViewById(R.id.txt_moves);
-		txtMoves.setText("x: " + (event.getRawX() - boardLeft) + ", y:" + (event.getRawY() - boardTop));
-	}
-
-	private BoardPos calculateNewPosition(MotionEvent event, int pieceId) {
-		int xOld = _board.getXPos(pieceId);
-		int yOld = _board.getYPos(pieceId);
-
-		final BoardPos result = new BoardPos(xOld, yOld);
-
-		float tendenceX = (event.getRawX() - _xRawOld) / _board_field_size_px;
-		float tendenceY = (event.getRawY() - _yRawOld) / _board_field_size_px;
-
-		if (Math.abs(tendenceX) > Math.abs(tendenceY)) {
-			int xDist = Math.round(tendenceX);
-			if (xDist >= 2) {
-				if (_board.canMoveTo(pieceId, xOld + 2, yOld)) {
-					xDist = 2;
-				} else {
-					xDist = 1;
-				}
-			} else if (xDist <= -2) {
-				if (_board.canMoveTo(pieceId, xOld - 2, yOld)) {
-					xDist = -2;
-				} else {
-					xDist = -1;
-				}
-			} else if (xDist == 0) {
-				if (tendenceX > 0.3) {
-					xDist = 1;
-				} else if (tendenceX < -0.3) {
-					xDist = -1;
-				}
-			}
-			result.x += xDist;
-		} else {
-			int yDist = Math.round(tendenceY);
-			if (yDist >= 2) {
-				if (_board.canMoveTo(pieceId, xOld, yOld + 2)) {
-					yDist = 2;
-				} else {
-					yDist = 1;
-				}
-			} else if (yDist <= -2) {
-				if (_board.canMoveTo(pieceId, xOld, yOld - 2)) {
-					yDist = -2;
-				} else {
-					yDist = -1;
-				}
-			} else if (yDist == 0) {
-				if (tendenceY > 0.3) {
-					yDist = 1;
-				} else if (tendenceY < -0.3) {
-					yDist = -1;
-				}
-			}
-			result.y += yDist;
-		}
-		return result;
-	}
-
-	private boolean isEventWithinBoard(MotionEvent event) {
-		// check if we are within board frame
-		if (event.getRawX() > boardLeft && event.getRawX() < boardRight && event.getRawY() > boardTop
-				&& event.getRawY() < boardBottom + 50) {
-			// TODO Hack mit +50 ist weil boardBottom/boardTop nicht "korrekt" sind,
-			// der "parent frame" hat naemlich aucn nochmal einen Abstand zu seinem "parent",
-			// aber keine Ahnung wie man da rankommt...
-			return true;
-		}
-		return false;
 	}
 
 }
