@@ -5,9 +5,10 @@ TODO
 - (C) Piece markieren dass gerade bewegt werden soll
 - (C) Bild als Hintergrund mit transparentem Start-Button in der Mitte
 
-0.7.0
+0.7
 - initial version
 
 0.8
 - updated for Android 4 
 - use dp instead of px to support different display sizes 
+- sound off as default

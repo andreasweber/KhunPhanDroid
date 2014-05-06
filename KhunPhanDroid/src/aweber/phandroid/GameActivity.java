@@ -58,7 +58,7 @@ public class GameActivity extends Activity {
 	private int _noOfMoves;
 
 	private MediaPlayer _playerMove, _playerSuccess; // to play sounds
-	private boolean _isSoundEnabled = true; // 'false' -> mute
+	private boolean _isSoundEnabled = false; // default -> mute
 	private Properties _props;
 
 	private int _board_field_size_px;
