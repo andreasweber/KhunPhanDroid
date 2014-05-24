@@ -28,26 +28,17 @@ import android.widget.TextView;
 import aweber.phandroid.game.Board;
 import aweber.phandroid.game.BoardPos;
 import aweber.phandroid.game.Piece;
-import aweber.phandroid.game.Piece11;
-import aweber.phandroid.game.Piece12;
-import aweber.phandroid.game.Piece21;
-import aweber.phandroid.game.Piece22;
 
-public class GameActivity extends Activity {
-
-	public static final int EXIT_RETURN_CODE = 4711;
+public abstract class GameActivity extends Activity {
 
 	private static final int BOARD_FIELD_SIZE_DP = 60;
 
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
-	private static final String PROP_BEST = "best"; // property where to store best solution
 
 	private String _version; // the software version
 	private FrameLayout _boardLayout;
 	private int boardLeft, boardTop; // board frame relative to parent frame
-	private Board _board;
-	private Piece _piece11_1, _piece11_2, _piece11_3, _piece11_4, _piece12_1, _piece12_2, _piece12_3, _piece12_4,
-			_piece21, _piece22;
+	protected Board _board;
 
 	/** helper vars for move */
 	private BoardPos _oldPos; // object pos before move
@@ -55,19 +46,20 @@ public class GameActivity extends Activity {
 	private boolean _isMoving; // are we currently in a move?
 	private boolean _canMoveX; // can we move horizontally in current move
 	private boolean _canMoveY; // can we move vertically in current move	
-	private int _noOfMoves;
+
+	protected int _noOfMoves;
 
 	private MediaPlayer _playerMove, _playerSuccess; // to play sounds
 	private boolean _isSoundEnabled = false; // default -> mute
-	private Properties _props;
+	protected Properties _props;
 
 	private int _board_field_size_px;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.game);
-		_boardLayout = (FrameLayout) findViewById(R.id.InnerBoardLayout);
+		setContentView(getContentView());
+		_boardLayout = (FrameLayout) findViewById(getInnerBoardLayout());
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
@@ -78,35 +70,6 @@ public class GameActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		// save current positions
-		_props.setProperty("x_piece11_1", String.valueOf(_piece11_1.xLeft));
-		_props.setProperty("y_piece11_1", String.valueOf(_piece11_1.yTop));
-		_props.setProperty("x_piece11_2", String.valueOf(_piece11_2.xLeft));
-		_props.setProperty("y_piece11_2", String.valueOf(_piece11_2.yTop));
-		_props.setProperty("x_piece11_3", String.valueOf(_piece11_3.xLeft));
-		_props.setProperty("y_piece11_3", String.valueOf(_piece11_3.yTop));
-		_props.setProperty("x_piece11_4", String.valueOf(_piece11_4.xLeft));
-		_props.setProperty("y_piece11_4", String.valueOf(_piece11_4.yTop));
-		_props.setProperty("x_piece12_1", String.valueOf(_piece12_1.xLeft));
-		_props.setProperty("y_piece12_1", String.valueOf(_piece12_1.yTop));
-		_props.setProperty("x_piece12_2", String.valueOf(_piece12_2.xLeft));
-		_props.setProperty("y_piece12_2", String.valueOf(_piece12_2.yTop));
-		_props.setProperty("x_piece12_3", String.valueOf(_piece12_3.xLeft));
-		_props.setProperty("y_piece12_3", String.valueOf(_piece12_3.yTop));
-		_props.setProperty("x_piece12_4", String.valueOf(_piece12_4.xLeft));
-		_props.setProperty("y_piece12_4", String.valueOf(_piece12_4.yTop));
-		_props.setProperty("x_piece21", String.valueOf(_piece21.xLeft));
-		_props.setProperty("y_piece21", String.valueOf(_piece21.yTop));
-		_props.setProperty("x_piece22", String.valueOf(_piece22.xLeft));
-		_props.setProperty("y_piece22", String.valueOf(_piece22.yTop));
-
-		_props.setProperty("x_free1", String.valueOf(_board._free1.x));
-		_props.setProperty("y_free1", String.valueOf(_board._free1.y));
-		_props.setProperty("x_free2", String.valueOf(_board._free2.x));
-		_props.setProperty("y_free2", String.valueOf(_board._free2.y));
-
-		_props.setProperty("moves", String.valueOf(_noOfMoves));
-
 		saveProperties();
 	}
 
@@ -155,75 +118,30 @@ public class GameActivity extends Activity {
 		}
 	}
 
-	private void exit() {
+	protected abstract int getContentView();
+
+	protected abstract int getInnerBoardLayout();
+
+	protected abstract int getTxtMoves();
+
+	protected abstract int getTxtBestSolution();
+
+	protected abstract boolean containsPieceId(int id);
+	
+	protected abstract String getPropBestSolution();
+
+	protected void exit() {
 		if (_playerMove != null) {
 			_playerMove.release();
 		}
 		if (_playerSuccess != null) {
 			_playerSuccess.release();
 		}
-		setResult(EXIT_RETURN_CODE, null);
-		finish();
 	}
 
-	private void initBoard() {
+	protected void initBoard() {
 		_board = new Board();
-
 		loadProperties(); // load properties where app state is saved
-
-		// load current positions, use default if not stored in properties
-		_piece11_1 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_1", "1")), Integer.valueOf(_props
-				.getProperty("y_piece11_1", "3"))); // default pos (1,3)
-		addPiece(R.id.Piece11_1, _piece11_1);
-		_piece11_2 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_2", "1")), Integer.valueOf(_props
-				.getProperty("y_piece11_2", "4"))); // default pos (1,4)
-		addPiece(R.id.Piece11_2, _piece11_2);
-		_piece11_3 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_3", "2")), Integer.valueOf(_props
-				.getProperty("y_piece11_3", "3"))); // default pos (2,3)
-		addPiece(R.id.Piece11_3, _piece11_3);
-		_piece11_4 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_4", "2")), Integer.valueOf(_props
-				.getProperty("y_piece11_4", "4"))); // default pos (2,4)
-		addPiece(R.id.Piece11_4, _piece11_4);
-
-		_piece12_1 = new Piece12(Integer.valueOf(_props.getProperty("x_piece12_1", "0")), Integer.valueOf(_props
-				.getProperty("y_piece12_1", "0"))); // default pos (0,0)
-		addPiece(R.id.Piece12_1, _piece12_1);
-		_piece12_2 = new Piece12(Integer.valueOf(_props.getProperty("x_piece12_2", "0")), Integer.valueOf(_props
-				.getProperty("y_piece12_2", "3"))); // default pos (0,3)
-		addPiece(R.id.Piece12_2, _piece12_2);
-		_piece12_3 = new Piece12(Integer.valueOf(_props.getProperty("x_piece12_3", "3")), Integer.valueOf(_props
-				.getProperty("y_piece12_3", "0"))); // default pos (3,0)
-		addPiece(R.id.Piece12_3, _piece12_3);
-		_piece12_4 = new Piece12(Integer.valueOf(_props.getProperty("x_piece12_4", "3")), Integer.valueOf(_props
-				.getProperty("y_piece12_4", "3"))); // default pos (3,3)
-		addPiece(R.id.Piece12_4, _piece12_4);
-
-		_piece21 = new Piece21(Integer.valueOf(_props.getProperty("x_piece21", "1")), Integer.valueOf(_props
-				.getProperty("y_piece21", "2"))); // default pos (1,2)
-		addPiece(R.id.Piece21, _piece21);
-		_piece22 = new Piece22(Integer.valueOf(_props.getProperty("x_piece22", "1")), Integer.valueOf(_props
-				.getProperty("y_piece22", "0"))); // default pos (1,0)
-		addPiece(R.id.Piece22, _piece22);
-
-		final BoardPos free1 = new BoardPos(Integer.valueOf(_props.getProperty("x_free1", "0")), Integer.valueOf(_props
-				.getProperty("y_free1", "2"))); // default pos (0,2)
-		final BoardPos free2 = new BoardPos(Integer.valueOf(_props.getProperty("x_free2", "3")), Integer.valueOf(_props
-				.getProperty("y_free2", "2"))); // default pos (3,2)
-		_board.setFreePos(free1, free2);
-		// showFreePositions(); // for debugging
-
-		if (!_props.containsKey(PROP_BEST)) {
-			// property entry doesn't exist yet, create it
-			_props.setProperty(PROP_BEST, "---");
-			saveProperties();
-		}
-		showBestSolution();
-
-		_noOfMoves = 0;
-		if (_props.containsKey("moves")) {
-			_noOfMoves = Integer.valueOf(_props.getProperty("moves"));
-		}
-		showMoves();
 	}
 
 	final OnTouchListener onTouch = new OnTouchListener() {
@@ -232,22 +150,13 @@ public class GameActivity extends Activity {
 
 			boardTop = _boardLayout.getTop();
 			boardLeft = _boardLayout.getLeft();
-		
-			switch (v.getId()) {// What is being touched
-			case R.id.Piece11_1:
-			case R.id.Piece11_2:
-			case R.id.Piece11_3:
-			case R.id.Piece11_4:
-			case R.id.Piece12_1:
-			case R.id.Piece12_2:
-			case R.id.Piece12_3:
-			case R.id.Piece12_4:
-			case R.id.Piece21:
-			case R.id.Piece22: {
+
+			// Check what is being touched
+			if (containsPieceId(v.getId())) {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_MOVE: { // move happend during pressed gesture
 					if (_isMoving) {
-						
+
 						// for debugging:
 						//showEventCoordinates(event);
 						//showMoveTendency(event, v.getId());
@@ -266,7 +175,7 @@ public class GameActivity extends Activity {
 				case MotionEvent.ACTION_UP: { // finished pressed gesture
 					if (_isMoving) {
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-						
+
 						// for debugging:
 						//showEventCoordinates(event);
 						//showMoveTendency(event, v.getId());
@@ -320,9 +229,7 @@ public class GameActivity extends Activity {
 					break;
 				}
 				}// inner switch
-				break;
-			}
-			}// outer switch
+			}// if
 			return true;
 		}
 	};
@@ -384,7 +291,7 @@ public class GameActivity extends Activity {
 		return result;
 	}
 
-	private void addPiece(int id, Piece p) {
+	protected void addPiece(int id, Piece p) {
 		_board.addPiece(id, p);
 		final View v = findViewById(id);
 		v.setOnTouchListener(onTouch);
@@ -407,37 +314,8 @@ public class GameActivity extends Activity {
 	}
 
 	/** reset board, board properties, move counter. */
-	private void reset() {
-		_props.remove("x_piece11_1");
-		_props.remove("y_piece11_1");
-		_props.remove("x_piece11_2");
-		_props.remove("y_piece11_2");
-		_props.remove("x_piece11_3");
-		_props.remove("y_piece11_3");
-		_props.remove("x_piece11_4");
-		_props.remove("y_piece11_4");
-		_props.remove("x_piece12_1");
-		_props.remove("y_piece12_1");
-		_props.remove("x_piece12_2");
-		_props.remove("y_piece12_2");
-		_props.remove("x_piece12_3");
-		_props.remove("y_piece12_3");
-		_props.remove("x_piece12_4");
-		_props.remove("y_piece12_4");
-		_props.remove("x_piece21");
-		_props.remove("y_piece21");
-		_props.remove("x_piece22");
-		_props.remove("y_piece22");
-
-		_props.remove("x_free1");
-		_props.remove("y_free1");
-		_props.remove("x_free2");
-		_props.remove("y_free2");
-
-		_props.remove("moves");
-
+	protected void reset() {
 		saveProperties();
-
 		initBoard();
 	}
 
@@ -465,7 +343,7 @@ public class GameActivity extends Activity {
 	}
 
 	/** save the properties file where app state is stored. */
-	private void saveProperties() {
+	protected void saveProperties() {
 		FileOutputStream propsOut = null;
 		try {
 			// create property file not readable by other apps
@@ -490,12 +368,12 @@ public class GameActivity extends Activity {
 		// check if we have a new best solution
 		int oldBest = Integer.MAX_VALUE;
 		try {
-			oldBest = Integer.valueOf(_props.getProperty(PROP_BEST));
+			oldBest = Integer.valueOf(_props.getProperty(getPropBestSolution()));
 		} catch (NumberFormatException e) {
 			// expected when no entry yet
 		}
 		if (_noOfMoves < oldBest) {
-			_props.setProperty(PROP_BEST, String.valueOf(_noOfMoves));
+			_props.setProperty(getPropBestSolution(), String.valueOf(_noOfMoves));
 			saveProperties();
 		}
 
@@ -513,14 +391,14 @@ public class GameActivity extends Activity {
 		dialog.show();
 	}
 
-	private void showMoves() {
-		final TextView txtMoves = (TextView) findViewById(R.id.txt_moves);
+	protected void showMoves() {
+		final TextView txtMoves = (TextView) findViewById(getTxtMoves());
 		txtMoves.setText(getString(R.string.game_moves) + ": " + String.valueOf(_noOfMoves));
 	}
 
-	private void showBestSolution() {
-		final TextView txtMoves = (TextView) findViewById(R.id.txt_best_solution);
-		txtMoves.setText(getString(R.string.game_best) + ": " + _props.getProperty(PROP_BEST));
+	protected void showBestSolution() {
+		final TextView txtMoves = (TextView) findViewById(getTxtBestSolution());
+		txtMoves.setText(getString(R.string.game_best) + ": " + _props.getProperty(getPropBestSolution()));
 		txtMoves.setGravity(Gravity.RIGHT);
 	}
 
@@ -546,7 +424,7 @@ public class GameActivity extends Activity {
 
 	/** for debugging.. */
 	private void showEventCoordinates(MotionEvent event) {
-		final TextView txtMoves = (TextView) findViewById(R.id.txt_moves);
+		final TextView txtMoves = (TextView) findViewById(getTxtMoves());
 		txtMoves.setText("x: " + Math.round(event.getRawX() - boardLeft) + ", y:"
 				+ Math.round(event.getRawY() - boardTop));
 	}
@@ -557,7 +435,7 @@ public class GameActivity extends Activity {
 		int yOld = _board.getYPos(pieceId);
 		final BoardPos oldPos = new BoardPos(xOld, yOld);
 		final BoardPos newPos = calculateNewPosition(event, pieceId);
-		final TextView txtMoves = (TextView) findViewById(R.id.txt_best_solution);
+		final TextView txtMoves = (TextView) findViewById(getTxtBestSolution());
 		txtMoves.setText("old: " + oldPos + ", new: " + newPos);
 		txtMoves.setGravity(Gravity.RIGHT);
 	}
