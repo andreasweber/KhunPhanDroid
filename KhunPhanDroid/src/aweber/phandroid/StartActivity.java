@@ -8,7 +8,7 @@ import android.view.View;
 public class StartActivity extends Activity {
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 13;
-	
+
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L2 = 14;
 
 	@Override
@@ -18,7 +18,7 @@ public class StartActivity extends Activity {
 	}
 
 	/**
-	 * Called when clicking Level1-Button 
+	 * Called when clicking Level1-Button
 	 * 
 	 * @see res/layout/start.xml
 	 */
@@ -27,9 +27,9 @@ public class StartActivity extends Activity {
 		// we can't use startActivity() cause we want to react on child activity's finish (see onActivityResult())
 		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_L1);
 	}
-	
+
 	/**
-	 * Called when clicking Level2-Button 
+	 * Called when clicking Level2-Button
 	 * 
 	 * @see res/layout/start.xml
 	 */
@@ -43,7 +43,8 @@ public class StartActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE) {
+		if ((requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L2 && resultCode == Level2Activity.EXIT_RETURN_CODE)) {
 			finish(); // 'Beenden' has been chosen in child activity's option menu -> also close parent(=this) activity
 		}
 	}

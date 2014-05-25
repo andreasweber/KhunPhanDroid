@@ -14,7 +14,7 @@
     android:layout_gravity="left|bottom"
     android:background="@android:color/transparent"
 	android:text="@string/button_level1"
-	android:textColor="#ff8800"
+	android:textColor="@color/textfarbe"
 	android:textStyle="bold|italic"
 	android:onClick="onClickStartLevel1"
 	/>
@@ -27,7 +27,7 @@
     android:layout_gravity="right|bottom"
     android:background="@android:color/transparent"
 	android:text="@string/button_level2"
-	android:textColor="#ff8800"
+	android:textColor="@color/textfarbe"
     android:textStyle="bold|italic"
 	android:onClick="onClickStartLevel2"
 	/>

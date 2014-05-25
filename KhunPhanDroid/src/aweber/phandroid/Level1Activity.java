@@ -12,6 +12,8 @@ public class Level1Activity extends GameActivity {
 	public static final int EXIT_RETURN_CODE = 4711;
 
 	private static final String PROP_BEST = "best"; // property where to store best solution of Level 1
+	
+	private static final String PROP_MOVES = "moves"; // property where to store current moves of Level 1
 
 	private Piece _piece11_1, _piece11_2, _piece11_3, _piece11_4, _piece12_1, _piece12_2, _piece12_3, _piece12_4,
 			_piece21, _piece22;
@@ -54,7 +56,7 @@ public class Level1Activity extends GameActivity {
 		_props.setProperty("x_free2", String.valueOf(_board._free2.x));
 		_props.setProperty("y_free2", String.valueOf(_board._free2.y));
 		
-		_props.setProperty("moves", String.valueOf(_noOfMoves));
+		_props.setProperty(PROP_MOVES, String.valueOf(_noOfMoves));
 		super.onPause();
 	}
 
@@ -111,8 +113,8 @@ public class Level1Activity extends GameActivity {
 		showBestSolution();
 
 		_noOfMoves = 0;
-		if (_props.containsKey("moves")) {
-			_noOfMoves = Integer.valueOf(_props.getProperty("moves"));
+		if (_props.containsKey(PROP_MOVES)) {
+			_noOfMoves = Integer.valueOf(_props.getProperty(PROP_MOVES));
 		}
 		showMoves();
 	}
@@ -145,7 +147,7 @@ public class Level1Activity extends GameActivity {
 		_props.remove("x_free2");
 		_props.remove("y_free2");
 
-		_props.remove("moves");
+		_props.remove(PROP_MOVES);
 		super.reset();
 	}
 

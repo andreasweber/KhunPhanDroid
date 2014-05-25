@@ -10,9 +10,12 @@
     	android:layout_height="wrap_content"
     	android:stretchColumns="1">
 	    <TableRow>
-	  	  	<TextView android:id="@+id/txt_moves2"/>
+	  	  	<TextView android:id="@+id/txt_moves2"
+	  	  	          android:gravity="left"
+	  	  	    	  android:textColor="@color/textfarbe"/>
 	  	  	<TextView android:id="@+id/txt_best_solution2"
-	 				  android:gravity="right"/>
+	 				  android:gravity="right"
+	 				  android:textColor="@color/textfarbe"/>
 	    </TableRow>
 	    <!-- for debugging 
 	    <TableRow>
