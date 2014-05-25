@@ -5,7 +5,8 @@
  <TextView android:id="@+id/TextViewSuccess"
  	android:layout_width="wrap_content" 
  	android:layout_height="wrap_content"
- 	android:text="@string/dialog_success"/>
+ 	android:text="@string/dialog_success"
+ 	android:textStyle="bold"/>
  
  <Button android:id="@+id/button_new_game" 
  	android:layout_below="@id/TextViewSuccess"
