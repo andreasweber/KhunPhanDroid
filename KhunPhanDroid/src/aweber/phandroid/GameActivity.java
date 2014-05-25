@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -39,13 +41,14 @@ public abstract class GameActivity extends Activity {
 
 	private String _version; // the software version
 	private FrameLayout _boardLayout;
-	private int boardLeft, boardTop; // board frame relative to parent frame
+	private int _boardLeft, _boardTop; // board frame relative to parent frame
 	protected Board _board;
 
 	/** helper vars for move */
 	private BoardPos _oldPos; // object pos before move
 	private float _xRawOld, _yRawOld; // cursor pos on display before move
-	private boolean _isMoving; // are we currently in a move?
+	private AtomicBoolean _isMoving = new AtomicBoolean(false); // are we currently in a move?
+	private AtomicInteger _mover = new AtomicInteger(-1); // which piece is currently moving?
 	private boolean _canMoveX; // can we move horizontally in current move
 	private boolean _canMoveY; // can we move vertically in current move	
 
@@ -155,14 +158,14 @@ public abstract class GameActivity extends Activity {
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
 
-			boardTop = _boardLayout.getTop();
-			boardLeft = _boardLayout.getLeft();
+			_boardTop = _boardLayout.getTop();
+			_boardLeft = _boardLayout.getLeft();
 
 			// Check what is being touched
 			if (containsPieceId(v.getId())) {
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_MOVE: { // move happend during pressed gesture
-					if (_isMoving) {
+					if (_isMoving.get() && _mover.get() == v.getId()) {
 
 						// for debugging:
 						//showEventCoordinates(event);
@@ -170,17 +173,17 @@ public abstract class GameActivity extends Activity {
 
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
 						if (_canMoveX) {
-							boardLayoutParams.leftMargin = (int) event.getRawX() - boardLeft - (v.getWidth() / 2);
+							boardLayoutParams.leftMargin = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
 						}
 						if (_canMoveY) {
-							boardLayoutParams.topMargin = (int) event.getRawY() - boardTop - Math.round(v.getHeight());
+							boardLayoutParams.topMargin = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
 						}
 						v.setLayoutParams(boardLayoutParams);
 					}
 					break;
 				}
 				case MotionEvent.ACTION_UP: { // finished pressed gesture
-					if (_isMoving) {
+					if (_isMoving.get() && _mover.get() == v.getId()) {
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
 
 						// for debugging:
@@ -208,28 +211,31 @@ public abstract class GameActivity extends Activity {
 							boardLayoutParams.topMargin = _oldPos.y * _board_field_size_px;
 						}
 						v.setLayoutParams(boardLayoutParams);
+						_isMoving.set(false);
 					}
 					break;
 				}
 				case MotionEvent.ACTION_DOWN: { // started pressed gesture
-					final int pieceId = v.getId();
-					if (_board.canMove(pieceId)) {
-						_oldPos = new BoardPos(_board.getXPos(pieceId), _board.getYPos(pieceId));
-						_xRawOld = event.getRawX();
-						_yRawOld = event.getRawY();
-						_isMoving = true;
-						if (_board.canMoveX(v.getId(), _oldPos.x, _oldPos.y)) {
-							_canMoveX = true;
+					if (_isMoving.compareAndSet(false, true)) {
+						final int pieceId = v.getId();
+						_mover.set(pieceId);
+						if (_board.canMove(pieceId)) {
+							_oldPos = new BoardPos(_board.getXPos(pieceId), _board.getYPos(pieceId));
+							_xRawOld = event.getRawX();
+							_yRawOld = event.getRawY();
+							if (_board.canMoveX(v.getId(), _oldPos.x, _oldPos.y)) {
+								_canMoveX = true;
+							} else {
+								_canMoveX = false;
+							}
+							if (_board.canMoveY(v.getId(), _oldPos.x, _oldPos.y)) {
+								_canMoveY = true;
+							} else {
+								_canMoveY = false;
+							}
 						} else {
-							_canMoveX = false;
+							_isMoving.set(false);
 						}
-						if (_board.canMoveY(v.getId(), _oldPos.x, _oldPos.y)) {
-							_canMoveY = true;
-						} else {
-							_canMoveY = false;
-						}
-					} else {
-						_isMoving = false;
 					}
 					break;
 				}
@@ -430,8 +436,8 @@ public abstract class GameActivity extends Activity {
 	/** for debugging.. */
 	private void showEventCoordinates(MotionEvent event) {
 		final TextView txtMoves = (TextView) findViewById(getTxtMoves());
-		txtMoves.setText("x: " + Math.round(event.getRawX() - boardLeft) + ", y:"
-				+ Math.round(event.getRawY() - boardTop));
+		txtMoves.setText("x: " + Math.round(event.getRawX() - _boardLeft) + ", y:"
+				+ Math.round(event.getRawY() - _boardTop));
 	}
 
 	/** for debugging.. */
