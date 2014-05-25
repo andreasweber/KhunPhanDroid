@@ -12,6 +12,7 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f050000;
+        public static final int textButtonPressed=0x7f050003;
         /**  color name="textfarbe">#206020</color 
          */
         public static final int textfarbe=0x7f050002;
@@ -22,12 +23,13 @@ public final class R {
     public static final class drawable {
         public static final int background_inner=0x7f020000;
         public static final int background_outer=0x7f020001;
-        public static final int icon=0x7f020002;
-        public static final int piece11_pic=0x7f020003;
-        public static final int piece12_pic=0x7f020004;
-        public static final int piece21_pic=0x7f020005;
-        public static final int piece22_pic=0x7f020006;
-        public static final int start_pic=0x7f020007;
+        public static final int button_selectable=0x7f020002;
+        public static final int icon=0x7f020003;
+        public static final int piece11_pic=0x7f020004;
+        public static final int piece12_pic=0x7f020005;
+        public static final int piece21_pic=0x7f020006;
+        public static final int piece22_pic=0x7f020007;
+        public static final int start_pic=0x7f020008;
     }
     public static final class id {
         public static final int InnerBoardLayout=0x7f080006;
