@@ -35,6 +35,8 @@ public abstract class GameActivity extends Activity {
 
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
 
+	private static final String PROP_SOUND = "sound"; // property where to store whether sound is enabled
+
 	private String _version; // the software version
 	private FrameLayout _boardLayout;
 	private int boardLeft, boardTop; // board frame relative to parent frame
@@ -109,6 +111,7 @@ public abstract class GameActivity extends Activity {
 			} else {
 				_isSoundEnabled = true; // sound was disabled, now enabled
 			}
+			_props.setProperty(PROP_SOUND, String.valueOf(_isSoundEnabled));
 			return true;
 		case R.id.opt_about:
 			showAboutDialog();
@@ -127,7 +130,7 @@ public abstract class GameActivity extends Activity {
 	protected abstract int getTxtBestSolution();
 
 	protected abstract boolean containsPieceId(int id);
-	
+
 	protected abstract String getPropBestSolution();
 
 	protected void exit() {
@@ -142,6 +145,10 @@ public abstract class GameActivity extends Activity {
 	protected void initBoard() {
 		_board = new Board();
 		loadProperties(); // load properties where app state is saved
+		_isSoundEnabled = false;
+		if (_props.containsKey(PROP_SOUND)) {
+			_isSoundEnabled = Boolean.valueOf(_props.getProperty(PROP_SOUND));
+		}
 	}
 
 	final OnTouchListener onTouch = new OnTouchListener() {
@@ -210,8 +217,6 @@ public abstract class GameActivity extends Activity {
 						_oldPos = new BoardPos(_board.getXPos(pieceId), _board.getYPos(pieceId));
 						_xRawOld = event.getRawX();
 						_yRawOld = event.getRawY();
-						// TODO mark piece (e.g. different color)
-						// v.setLayoutParams(boardLayoutParams);
 						_isMoving = true;
 						if (_board.canMoveX(v.getId(), _oldPos.x, _oldPos.y)) {
 							_canMoveX = true;
