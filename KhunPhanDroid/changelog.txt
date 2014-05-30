@@ -1,9 +1,8 @@
 
 TODO 
-- (A) Sound-on/off in Properties speichern
-- (C) Performance opt., Groesse apk-Datei opt.
-- (C) Piece markieren dass gerade bewegt werden soll
-- (C) Bild als Hintergrund mit transparentem Start-Button in der Mitte
+- Steine nur innerhalb Korridor anzeigen in dem sie bewegt werden können
+- Steine mit 3D Effekt
+- 2nd Level
 
 0.7
 - initial version

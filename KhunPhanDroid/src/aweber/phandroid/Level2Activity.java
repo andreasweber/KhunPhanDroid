@@ -11,6 +11,8 @@ public class Level2Activity extends GameActivity {
 	
 	public static final int EXIT_RETURN_CODE = 4712;
 	
+	private static final int BOARD_HEIGHT_DP = 320; // TODO
+	
 	private static final String PROP_BEST = "best2"; // property where to store best solution of Level 2
 	
 	private static final String PROP_MOVES = "moves2"; // property where to store current moves of Level 2
@@ -166,6 +168,16 @@ public class Level2Activity extends GameActivity {
 	@Override
 	protected int getInnerBoardLayout() {
 		return R.id.InnerBoardLayout2;
+	}
+	
+	@Override
+	protected int getOuterBoardLayout() {
+		return R.id.OuterBoardLayout2;
+	}
+	
+	@Override
+	protected int getBoardHeight() {
+		return BOARD_HEIGHT_DP;
 	}
 	
 	@Override

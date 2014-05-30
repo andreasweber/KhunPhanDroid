@@ -16,6 +16,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +35,8 @@ import aweber.phandroid.game.Piece;
 public abstract class GameActivity extends Activity {
 
 	private static final int BOARD_FIELD_SIZE_DP = 60;
+
+	private static final int BOARD_INNER_OUTER_DIFF_DP = 10; // difference between inner and outer board
 
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
 
@@ -65,10 +68,24 @@ public abstract class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(getContentView());
 		_boardLayout = (FrameLayout) findViewById(getInnerBoardLayout());
+
+		// locate board in the middle of the screen
+		FrameLayout outerBoardLayout = (FrameLayout) findViewById(getOuterBoardLayout());
+		DisplayMetrics metrics = getResources().getDisplayMetrics();
+		int display_height = metrics.heightPixels;
+		int board_size_px = Math.round(getBoardHeight() * getResources().getDisplayMetrics().density);
+		int inner_outer_diff = Math.round(BOARD_INNER_OUTER_DIFF_DP * getResources().getDisplayMetrics().density);
+		int outerBottomMargin = (display_height - board_size_px) / 2;
+		int innerBottomMargin = ((display_height - board_size_px) / 2) + inner_outer_diff;
+		((LayoutParams) _boardLayout.getLayoutParams()).bottomMargin = innerBottomMargin;
+		((LayoutParams) outerBoardLayout.getLayoutParams()).bottomMargin = outerBottomMargin;
+
+		_board_field_size_px = Math.round(BOARD_FIELD_SIZE_DP * getResources().getDisplayMetrics().density);
+
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
-		_board_field_size_px = Math.round(BOARD_FIELD_SIZE_DP * getResources().getDisplayMetrics().density);
+
 		initBoard();
 	}
 
@@ -127,6 +144,10 @@ public abstract class GameActivity extends Activity {
 	protected abstract int getContentView();
 
 	protected abstract int getInnerBoardLayout();
+
+	protected abstract int getOuterBoardLayout();
+
+	protected abstract int getBoardHeight(); // DP
 
 	protected abstract int getTxtMoves();
 

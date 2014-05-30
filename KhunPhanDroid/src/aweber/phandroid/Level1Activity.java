@@ -10,6 +10,8 @@ import aweber.phandroid.game.Piece22;
 public class Level1Activity extends GameActivity {
 
 	public static final int EXIT_RETURN_CODE = 4711;
+	
+	private static final int BOARD_HEIGHT_DP = 320; 
 
 	private static final String PROP_BEST = "best"; // property where to store best solution of Level 1
 	
@@ -167,7 +169,17 @@ public class Level1Activity extends GameActivity {
 	protected int getInnerBoardLayout() {
 		return R.id.InnerBoardLayout;
 	}
-
+	
+	@Override
+	protected int getOuterBoardLayout() {
+		return R.id.OuterBoardLayout;
+	}
+	
+	@Override
+	protected int getBoardHeight() {
+		return BOARD_HEIGHT_DP;
+	}
+	
 	@Override
 	protected int getTxtMoves() {
 		return R.id.txt_moves;
