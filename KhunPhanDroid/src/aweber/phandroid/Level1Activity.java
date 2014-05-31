@@ -1,5 +1,6 @@
 package aweber.phandroid;
 
+import aweber.phandroid.game.Board;
 import aweber.phandroid.game.BoardPos;
 import aweber.phandroid.game.Piece;
 import aweber.phandroid.game.Piece11;
@@ -65,7 +66,9 @@ public class Level1Activity extends GameActivity {
 	@Override
 	protected void initBoard() {
 		super.initBoard();
-
+		
+		_board = new Board(10);
+		
 		// load current positions, use default if not stored in properties
 		_piece11_1 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_1", "1")), Integer.valueOf(_props
 				.getProperty("y_piece11_1", "3"))); // default pos (1,3)

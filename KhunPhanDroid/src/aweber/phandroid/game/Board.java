@@ -1,8 +1,6 @@
 package aweber.phandroid.game;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import android.util.SparseArray;
 
 public class Board {
 
@@ -14,15 +12,12 @@ public class Board {
 	// 0/4 1/4 2/4 3/4
 	// ----_______----
 
-	public static final int X_MAX = 3;
-	public static final int Y_MAX = 4;
-
 	public BoardPos _free1, _free2;
 
-	private Map<Integer, Piece> _pieceMap;
+	private SparseArray<Piece> _pieceMap;
 
-	public Board() {
-		_pieceMap = new HashMap<Integer, Piece>(10);
+	public Board(int noOfPieces) {
+		_pieceMap = new SparseArray<Piece>(noOfPieces);
 	}
 
 	public void setFreePos(BoardPos free1, BoardPos free2) {
@@ -34,22 +29,18 @@ public class Board {
 		_pieceMap.put(id, p);
 	}
 
-	public Collection<Piece> getPieces() {
-		return _pieceMap.values();
-	}
-
 	/** @return 'true' if Piece can move at all. */
 	public boolean canMove(int pieceId) {
 		Piece p = _pieceMap.get(pieceId);
 		return p.canMove(_free1, _free2);
 	}
-	
+
 	/** @return 'true' if Piece can move horizontally. */
 	public boolean canMoveX(int pieceId, int x, int y) {
 		Piece p = _pieceMap.get(pieceId);
 		return p.canMoveTo(_free1, _free2, x + 1, y) || p.canMoveTo(_free1, _free2, x - 1, y);
 	}
-	
+
 	/** @return 'true' if Piece can move vertically. */
 	public boolean canMoveY(int pieceId, int x, int y) {
 		Piece p = _pieceMap.get(pieceId);
@@ -95,7 +86,8 @@ public class Board {
 	}
 
 	public boolean isSolution() {
-		for (Piece p : _pieceMap.values()) {
+		for (int i = 0; i < _pieceMap.size(); i++) {
+			Piece p = _pieceMap.valueAt(i);
 			if (p instanceof Piece22) {
 				if (p.xLeft == 1 && p.yTop == 3) {
 					return true;

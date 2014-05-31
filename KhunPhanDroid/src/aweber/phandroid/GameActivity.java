@@ -167,7 +167,6 @@ public abstract class GameActivity extends Activity {
 	}
 
 	protected void initBoard() {
-		_board = new Board();
 		loadProperties(); // load properties where app state is saved
 		_isSoundEnabled = false;
 		if (_props.containsKey(PROP_SOUND)) {

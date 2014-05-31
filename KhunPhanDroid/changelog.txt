@@ -1,7 +1,6 @@
 
 TODO 
 - Steine nur innerhalb Korridor anzeigen in dem sie bewegt werden können
-- Steine mit 3D Effekt
 - 2nd Level
 
 0.7
