@@ -11,11 +11,13 @@ import aweber.phandroid.game.Piece22;
 public class Level1Activity extends GameActivity {
 
 	public static final int EXIT_RETURN_CODE = 4711;
-	
-	private static final int BOARD_HEIGHT_DP = 320; 
+
+	private static final int BOARD_FIELD_SIZE_DP = 60;
+
+	private static final int BOARD_HEIGHT_DP = 320;
 
 	private static final String PROP_BEST = "best"; // property where to store best solution of Level 1
-	
+
 	private static final String PROP_MOVES = "moves"; // property where to store current moves of Level 1
 
 	private Piece _piece11_1, _piece11_2, _piece11_3, _piece11_4, _piece12_1, _piece12_2, _piece12_3, _piece12_4,
@@ -58,7 +60,7 @@ public class Level1Activity extends GameActivity {
 		_props.setProperty("y_free1", String.valueOf(_board._free1.y));
 		_props.setProperty("x_free2", String.valueOf(_board._free2.x));
 		_props.setProperty("y_free2", String.valueOf(_board._free2.y));
-		
+
 		_props.setProperty(PROP_MOVES, String.valueOf(_noOfMoves));
 		super.onPause();
 	}
@@ -66,9 +68,9 @@ public class Level1Activity extends GameActivity {
 	@Override
 	protected void initBoard() {
 		super.initBoard();
-		
+
 		_board = new Board(10);
-		
+
 		// load current positions, use default if not stored in properties
 		_piece11_1 = new Piece11(Integer.valueOf(_props.getProperty("x_piece11_1", "1")), Integer.valueOf(_props
 				.getProperty("y_piece11_1", "3"))); // default pos (1,3)
@@ -172,17 +174,22 @@ public class Level1Activity extends GameActivity {
 	protected int getInnerBoardLayout() {
 		return R.id.InnerBoardLayout;
 	}
-	
+
 	@Override
 	protected int getOuterBoardLayout() {
 		return R.id.OuterBoardLayout;
 	}
-	
+
 	@Override
 	protected int getBoardHeight() {
 		return BOARD_HEIGHT_DP;
 	}
-	
+
+	@Override
+	protected int getBoardFieldSize() {
+		return BOARD_FIELD_SIZE_DP;
+	}
+
 	@Override
 	protected int getTxtMoves() {
 		return R.id.txt_moves;

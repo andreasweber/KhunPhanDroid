@@ -26,89 +26,125 @@
     </TableLayout>
     
     <FrameLayout
-		android:layout_width="260dp" 
-		android:layout_height="320dp" 
+		android:layout_width="220dp" 
+		android:layout_height="420dp" 
 		android:id="@+id/OuterBoardLayout2" 
 		android:layout_gravity="center_horizontal|bottom">
 		<ImageView 
 			android:layout_width="fill_parent" 
 			android:layout_height="fill_parent"
-			android:src="@drawable/background_outer"
+			android:src="@drawable/background_outer2"
 		/>
 		<FrameLayout
-			android:layout_width="120dp" 
+			android:layout_width="100dp" 
 			android:layout_height="10dp" 
 			android:background="@color/black" 
 			android:layout_gravity="center_horizontal|bottom"/>
 	</FrameLayout>		
 		
 	<FrameLayout 
-		android:layout_width="240dp" 
-		android:layout_height="300dp" 
+		android:layout_width="200dp" 
+		android:layout_height="400dp" 
 		android:id="@+id/InnerBoardLayout2" 
 		android:layout_gravity="center_horizontal|bottom">
 		<ImageView 
 			android:layout_width="fill_parent" 
 			android:layout_height="fill_parent"
-			android:src="@drawable/background_inner"
+			android:src="@drawable/background_inner2"
 		/>
 		<View android:background="@drawable/piece11_pic" 
-			android:layout_height="60dp" 
-			android:layout_width="60dp" 
+			android:layout_height="50dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece11_1" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece11_pic" 
-			android:layout_height="60dp" 
-			android:layout_width="60dp" 
+			android:layout_height="50dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece11_2" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece11_pic" 
-			android:layout_height="60dp" 
-			android:layout_width="60dp" 
+			android:layout_height="50dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece11_3" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece11_pic" 
-			android:layout_height="60dp" 
-			android:layout_width="60dp" 
+			android:layout_height="50dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece11_4" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece12_pic" 
-			android:layout_height="120dp" 
-			android:layout_width="60dp" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece12_1" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece12_pic" 
-			android:layout_height="120dp" 
-			android:layout_width="60dp" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece12_2" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece12_pic" 
-			android:layout_height="120dp" 
-			android:layout_width="60dp" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece12_3" 
 			android:layout_gravity="top"> 
 		</View>
 		<View android:background="@drawable/piece12_pic" 
-			android:layout_height="120dp" 
-			android:layout_width="60dp" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
 			android:id="@+id/L2Piece12_4" 
 			android:layout_gravity="top"> 
 		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
+			android:id="@+id/L2Piece12_5" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece12_pic" 
+			android:layout_height="100dp" 
+			android:layout_width="50dp" 
+			android:id="@+id/L2Piece12_6" 
+			android:layout_gravity="top"> 
+		</View>
 		<View android:background="@drawable/piece21_pic" 
-			android:layout_height="60dp" 
-			android:layout_width="120dp" 
-			android:id="@+id/L2Piece21" 
+			android:layout_height="50dp" 
+			android:layout_width="100dp" 
+			android:id="@+id/L2Piece21_1" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece21_pic" 
+			android:layout_height="50dp" 
+			android:layout_width="100dp" 
+			android:id="@+id/L2Piece21_2" 
+			android:layout_gravity="top"> 
+		</View>
+		<View android:background="@drawable/piece21_pic" 
+			android:layout_height="50dp" 
+			android:layout_width="100dp" 
+			android:id="@+id/L2Piece21_3" 
+			android:layout_gravity="top"> 
+		</View>
+			<View android:background="@drawable/piece21_pic" 
+			android:layout_height="50dp" 
+			android:layout_width="100dp" 
+			android:id="@+id/L2Piece21_4" 
+			android:layout_gravity="top"> 
+		</View>
+			<View android:background="@drawable/piece21_pic" 
+			android:layout_height="50dp" 
+			android:layout_width="100dp" 
+			android:id="@+id/L2Piece21_5" 
 			android:layout_gravity="top"> 
 		</View> 
 		<View android:background="@drawable/piece22_pic" 
-			android:layout_height="120dp" 
-			android:layout_width="120dp" 
+			android:layout_height="100dp" 
+			android:layout_width="100dp" 
 			android:id="@+id/L2Piece22" 
 			android:layout_gravity="top"> 
 		</View> 

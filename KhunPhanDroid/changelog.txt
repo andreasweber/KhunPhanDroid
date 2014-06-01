@@ -1,7 +1,8 @@
 
 TODO 
 - Steine nur innerhalb Korridor anzeigen in dem sie bewegt werden können
-- 2nd Level
+- Level 2 bei unterschiedlicher Display-Größe
+- Einschränkung für App: Mindestens Display 320*480
 
 0.7
 - initial version

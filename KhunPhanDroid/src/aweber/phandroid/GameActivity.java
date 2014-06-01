@@ -34,8 +34,6 @@ import aweber.phandroid.game.Piece;
 
 public abstract class GameActivity extends Activity {
 
-	private static final int BOARD_FIELD_SIZE_DP = 60;
-
 	private static final int BOARD_INNER_OUTER_DIFF_DP = 10; // difference between inner and outer board
 
 	private static final String PROPERTY_FILE_NAME = "phandroid.props";
@@ -80,7 +78,7 @@ public abstract class GameActivity extends Activity {
 		((LayoutParams) _boardLayout.getLayoutParams()).bottomMargin = innerBottomMargin;
 		((LayoutParams) outerBoardLayout.getLayoutParams()).bottomMargin = outerBottomMargin;
 
-		_board_field_size_px = Math.round(BOARD_FIELD_SIZE_DP * getResources().getDisplayMetrics().density);
+		_board_field_size_px = Math.round(getBoardFieldSize() * getResources().getDisplayMetrics().density);
 
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
@@ -148,6 +146,8 @@ public abstract class GameActivity extends Activity {
 	protected abstract int getOuterBoardLayout();
 
 	protected abstract int getBoardHeight(); // DP
+	
+	protected abstract int getBoardFieldSize(); // DP
 
 	protected abstract int getTxtMoves();
 
