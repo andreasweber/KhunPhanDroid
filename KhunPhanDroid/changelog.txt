@@ -1,13 +1,16 @@
 
 TODO 
-- Steine nur innerhalb Korridor anzeigen in dem sie bewegt werden können
-- Level 2 bei unterschiedlicher Display-Größe
-- Einschränkung für App: Mindestens Display 320*480
+- Einschränkung für App? Mindestens Display 320*480?
+- auf SD Card installierbar?
 
 0.7
 - initial version
 
 0.8
+- added level 2
 - updated for Android 4 
 - use dp instead of px to support different display sizes 
 - sound off as default
+- tested on:
+  - Debugger: 320 x 480
+  - Samsung Galaxy S4 Mini (Display: 540 x 960)

@@ -35,16 +35,48 @@ public class Board {
 		return p.canMove(_free1, _free2);
 	}
 
-	/** @return 'true' if Piece can move horizontally. */
-	public boolean canMoveX(int pieceId, int x, int y) {
+	/** @return no of possible moves to right. */
+	public int canMoveRight(int pieceId, int x, int y) {
 		Piece p = _pieceMap.get(pieceId);
-		return p.canMoveTo(_free1, _free2, x + 1, y) || p.canMoveTo(_free1, _free2, x - 1, y);
+		if (p.canMoveTo(_free1, _free2, x + 2, y)) {
+			return 2;
+		} else if (p.canMoveTo(_free1, _free2, x + 1, y)) {
+			return 1;
+		}
+		return 0;
 	}
 
-	/** @return 'true' if Piece can move vertically. */
-	public boolean canMoveY(int pieceId, int x, int y) {
+	/** @return no of possible moves to left. */
+	public int canMoveLeft(int pieceId, int x, int y) {
 		Piece p = _pieceMap.get(pieceId);
-		return p.canMoveTo(_free1, _free2, x, y + 1) || p.canMoveTo(_free1, _free2, x, y - 1);
+		if (p.canMoveTo(_free1, _free2, x - 2, y)) {
+			return 2;
+		} else if (p.canMoveTo(_free1, _free2, x - 1, y)) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/** @return no of possible moves to top. */
+	public int canMoveUp(int pieceId, int x, int y) {
+		Piece p = _pieceMap.get(pieceId);
+		if (p.canMoveTo(_free1, _free2, x, y - 2)) {
+			return 2;
+		} else if (p.canMoveTo(_free1, _free2, x, y - 1)) {
+			return 1;
+		} 
+		return 0;
+	}
+
+	/** @return no of possible moves to bottom. */
+	public int canMoveDown(int pieceId, int x, int y) {
+		Piece p = _pieceMap.get(pieceId);
+		if (p.canMoveTo(_free1, _free2, x, y + 2)) {
+			return 2;
+		} else if (p.canMoveTo(_free1, _free2, x, y + 1)) {
+			return 1;
+		} 
+		return 0;
 	}
 
 	/**

@@ -51,7 +51,11 @@ public abstract class GameActivity extends Activity {
 	private AtomicBoolean _isMoving = new AtomicBoolean(false); // are we currently in a move?
 	private AtomicInteger _mover = new AtomicInteger(-1); // which piece is currently moving?
 	private boolean _canMoveX; // can we move horizontally in current move
-	private boolean _canMoveY; // can we move vertically in current move	
+	private boolean _canMoveY; // can we move vertically in current move
+	private int _minX; // min. pos. where piece can move
+	private int _maxX; // max. pos. where piece can move
+	private int _minY; // min. pos. where piece can move
+	private int _maxY; // max. pos. where piece can move
 
 	protected int _noOfMoves;
 
@@ -83,7 +87,7 @@ public abstract class GameActivity extends Activity {
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
-		
+
 		initBoard();
 	}
 
@@ -146,7 +150,7 @@ public abstract class GameActivity extends Activity {
 	protected abstract int getOuterBoardLayout();
 
 	protected abstract int getBoardHeight(); // in pixels
-	
+
 	protected abstract int getBoardFieldSize(); // in pixels
 
 	protected abstract int getTxtMoves();
@@ -193,10 +197,22 @@ public abstract class GameActivity extends Activity {
 
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
 						if (_canMoveX) {
-							boardLayoutParams.leftMargin = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
+							int x = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
+							if (x < _minX) {
+								x = _minX;
+							} else if (x > _maxX) {
+								x = _maxX;
+							}
+							boardLayoutParams.leftMargin = x;
 						}
 						if (_canMoveY) {
-							boardLayoutParams.topMargin = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
+							int y = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
+							if (y < _minY) {
+								y = _minY;
+							} else if (y > _maxY) {
+								y = _maxY;
+							}
+							boardLayoutParams.topMargin = y;
 						}
 						v.setLayoutParams(boardLayoutParams);
 					}
@@ -243,16 +259,28 @@ public abstract class GameActivity extends Activity {
 							_oldPos = new BoardPos(_board.getXPos(pieceId), _board.getYPos(pieceId));
 							_xRawOld = event.getRawX();
 							_yRawOld = event.getRawY();
-							if (_board.canMoveX(v.getId(), _oldPos.x, _oldPos.y)) {
+
+							int possibleMovesLeft = _board.canMoveLeft(v.getId(), _oldPos.x, _oldPos.y);
+							int possibleMovesRight = _board.canMoveRight(v.getId(), _oldPos.x, _oldPos.y);
+							int possibleMovesUp = _board.canMoveUp(v.getId(), _oldPos.x, _oldPos.y);
+							int possibleMovesDown = _board.canMoveDown(v.getId(), _oldPos.x, _oldPos.y);
+
+							_minX = (_oldPos.x - possibleMovesLeft) * _board_field_size_px;
+							_maxX = (_oldPos.x + possibleMovesRight) * _board_field_size_px;
+							_minY = (_oldPos.y - possibleMovesUp) * _board_field_size_px;
+							_maxY = (_oldPos.y + possibleMovesDown) * _board_field_size_px;
+
+							if (possibleMovesLeft > 0 || possibleMovesRight > 0) {
 								_canMoveX = true;
 							} else {
 								_canMoveX = false;
 							}
-							if (_board.canMoveY(v.getId(), _oldPos.x, _oldPos.y)) {
+							if (possibleMovesDown > 0 || possibleMovesUp > 0) {
 								_canMoveY = true;
 							} else {
 								_canMoveY = false;
 							}
+
 						} else {
 							_isMoving.set(false);
 						}
