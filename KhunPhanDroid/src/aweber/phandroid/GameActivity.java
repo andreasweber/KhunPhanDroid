@@ -196,24 +196,45 @@ public abstract class GameActivity extends Activity {
 						//showMoveTendency(event, v.getId());
 
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
+						int diffX = 0; // difference between old X position and now
+						int diffY = 0; // difference between old Y position and now
+						int x = boardLayoutParams.leftMargin;
+						int y = boardLayoutParams.topMargin;
 						if (_canMoveX) {
-							int x = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
+							x = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
 							if (x < _minX) {
 								x = _minX;
 							} else if (x > _maxX) {
 								x = _maxX;
 							}
-							boardLayoutParams.leftMargin = x;
+							diffX = x - _oldPos.x * _board_field_size_px;
 						}
 						if (_canMoveY) {
-							int y = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
+							y = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
 							if (y < _minY) {
 								y = _minY;
 							} else if (y > _maxY) {
 								y = _maxY;
 							}
-							boardLayoutParams.topMargin = y;
+							diffY = y - _oldPos.y * _board_field_size_px;
 						}
+						String s = "";
+						if (_canMoveX && _canMoveY) {
+							// we only want to move in one direction
+							if (Math.abs(diffX) > Math.abs(diffY)) {
+								y = _oldPos.y * _board_field_size_px; // reset, because we move horizontally
+							} else {
+								x = _oldPos.x * _board_field_size_px; // reset, because we move vertically
+							}
+							s = diffX + "," + diffY;
+						}
+						final TextView txtMoves = (TextView) findViewById(getTxtMoves());
+						txtMoves.setText("" + x + "; " + s);
+						final TextView txtSol = (TextView) findViewById(getTxtBestSolution());
+						txtSol.setText("" + y);
+
+						boardLayoutParams.leftMargin = x;
+						boardLayoutParams.topMargin = y;
 						v.setLayoutParams(boardLayoutParams);
 					}
 					break;
@@ -456,9 +477,9 @@ public abstract class GameActivity extends Activity {
 	}
 
 	protected void showBestSolution() {
-		final TextView txtMoves = (TextView) findViewById(getTxtBestSolution());
-		txtMoves.setText(getString(R.string.game_best) + ": " + _props.getProperty(getPropBestSolution()));
-		txtMoves.setGravity(Gravity.RIGHT);
+		final TextView txtSol = (TextView) findViewById(getTxtBestSolution());
+		txtSol.setText(getString(R.string.game_best) + ": " + _props.getProperty(getPropBestSolution()));
+		txtSol.setGravity(Gravity.RIGHT);
 	}
 
 	private void showAboutDialog() {
