@@ -196,27 +196,27 @@ public abstract class GameActivity extends Activity {
 						//showMoveTendency(event, v.getId());
 
 						final FrameLayout.LayoutParams boardLayoutParams = (LayoutParams) v.getLayoutParams();
-						int diffX = 0; // difference between old X position and now
-						int diffY = 0; // difference between old Y position and now
+						float diffX = 0; // difference between old X position and now
+						float diffY = 0; // difference between old Y position and now
 						int x = boardLayoutParams.leftMargin;
 						int y = boardLayoutParams.topMargin;
 						if (_canMoveX) {
-							x = (int) event.getRawX() - _boardLeft - (v.getWidth() / 2);
+							diffX = event.getRawX() - _xRawOld;
+							x = _oldPos.x * _board_field_size_px + (int) diffX;
 							if (x < _minX) {
 								x = _minX;
 							} else if (x > _maxX) {
 								x = _maxX;
 							}
-							diffX = x - _oldPos.x * _board_field_size_px;
 						}
 						if (_canMoveY) {
-							y = (int) event.getRawY() - _boardTop - Math.round(v.getHeight());
+							diffY = event.getRawY() - _yRawOld;
+							y = _oldPos.y * _board_field_size_px + (int) diffY;
 							if (y < _minY) {
 								y = _minY;
 							} else if (y > _maxY) {
 								y = _maxY;
 							}
-							diffY = y - _oldPos.y * _board_field_size_px;
 						}
 						String s = "";
 						if (_canMoveX && _canMoveY) {
@@ -226,8 +226,9 @@ public abstract class GameActivity extends Activity {
 							} else {
 								x = _oldPos.x * _board_field_size_px; // reset, because we move vertically
 							}
-							s = diffX + "," + diffY;
+							s = (int)diffX + "," + (int)diffY;
 						}
+						// TODO remove
 						final TextView txtMoves = (TextView) findViewById(getTxtMoves());
 						txtMoves.setText("" + x + "; " + s);
 						final TextView txtSol = (TextView) findViewById(getTxtBestSolution());

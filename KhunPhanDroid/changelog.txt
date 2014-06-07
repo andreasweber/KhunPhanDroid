@@ -1,6 +1,5 @@
 
 TODO 
-- Fix: Piece haut nach oben ab wenn pressed  (wegen bottomMargin? passiert nicht wenn man es unten drückt)
 - Einschränkung für App? Mindestens Display 320*480?
 - auf SD Card installierbar?
 
