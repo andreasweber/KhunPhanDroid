@@ -22,10 +22,6 @@ public class Level2Activity extends GameActivity {
 
 	public static final int EXIT_RETURN_CODE = 4712;
 
-	private static final int BOARD_HEIGHT_DP = 420; 
-	
-	private static final int BOARD_FIELD_SIZE_DP = 50;
-
 	private static final String PROP_BEST = "best2"; // property where to store best solution of Level 2
 
 	private static final String PROP_MOVES = "moves2"; // property where to store current moves of Level 2
@@ -244,12 +240,12 @@ public class Level2Activity extends GameActivity {
 
 	@Override
 	protected int getBoardHeight() {
-		return BOARD_HEIGHT_DP;
+		return (int) getResources().getDimension(R.dimen.outer_height_l2);
 	}
 	
 	@Override
 	protected int getBoardFieldSize() {
-		return BOARD_FIELD_SIZE_DP;
+		return (int) getResources().getDimension(R.dimen.piece1_l2);
 	}
 
 	@Override

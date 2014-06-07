@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="piece1_l1">70dp</dimen>
+    <dimen name="piece2_l1">140dp</dimen>
+    <dimen name="inner_height_l1">350dp</dimen>
+    <dimen name="inner_width_l1">280dp</dimen>
+    <dimen name="outer_height_l1">370dp</dimen>
+    <dimen name="outer_width_l1">300dp</dimen>
+    
+    <dimen name="piece1_l2">60dp</dimen>
+    <dimen name="piece2_l2">120dp</dimen>
+    <dimen name="inner_height_l2">480dp</dimen>
+    <dimen name="inner_width_l2">240dp</dimen>
+    <dimen name="outer_height_l2">500dp</dimen>
+    <dimen name="outer_width_l2">260dp</dimen>
+</resources>

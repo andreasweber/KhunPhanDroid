@@ -71,19 +71,19 @@ public abstract class GameActivity extends Activity {
 		FrameLayout outerBoardLayout = (FrameLayout) findViewById(getOuterBoardLayout());
 		DisplayMetrics metrics = getResources().getDisplayMetrics();
 		int display_height = metrics.heightPixels;
-		int board_size_px = Math.round(getBoardHeight() * getResources().getDisplayMetrics().density);
+		int board_size_px = getBoardHeight();
 		int inner_outer_diff = Math.round(BOARD_INNER_OUTER_DIFF_DP * getResources().getDisplayMetrics().density);
 		int outerBottomMargin = (display_height - board_size_px) / 2;
 		int innerBottomMargin = ((display_height - board_size_px) / 2) + inner_outer_diff;
 		((LayoutParams) _boardLayout.getLayoutParams()).bottomMargin = innerBottomMargin;
 		((LayoutParams) outerBoardLayout.getLayoutParams()).bottomMargin = outerBottomMargin;
 
-		_board_field_size_px = Math.round(getBoardFieldSize() * getResources().getDisplayMetrics().density);
+		_board_field_size_px = Math.round(getBoardFieldSize());
 
 		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
 		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
-
+		
 		initBoard();
 	}
 
@@ -145,9 +145,9 @@ public abstract class GameActivity extends Activity {
 
 	protected abstract int getOuterBoardLayout();
 
-	protected abstract int getBoardHeight(); // DP
+	protected abstract int getBoardHeight(); // in pixels
 	
-	protected abstract int getBoardFieldSize(); // DP
+	protected abstract int getBoardFieldSize(); // in pixels
 
 	protected abstract int getTxtMoves();
 
