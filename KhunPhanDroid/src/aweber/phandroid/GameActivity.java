@@ -218,7 +218,6 @@ public abstract class GameActivity extends Activity {
 								y = _maxY;
 							}
 						}
-						String s = "";
 						if (_canMoveX && _canMoveY) {
 							// we only want to move in one direction
 							if (Math.abs(diffX) > Math.abs(diffY)) {
@@ -226,14 +225,8 @@ public abstract class GameActivity extends Activity {
 							} else {
 								x = _oldPos.x * _board_field_size_px; // reset, because we move vertically
 							}
-							s = (int)diffX + "," + (int)diffY;
 						}
-						// TODO remove
-						final TextView txtMoves = (TextView) findViewById(getTxtMoves());
-						txtMoves.setText("" + x + "; " + s);
-						final TextView txtSol = (TextView) findViewById(getTxtBestSolution());
-						txtSol.setText("" + y);
-
+						
 						boardLayoutParams.leftMargin = x;
 						boardLayoutParams.topMargin = y;
 						v.setLayoutParams(boardLayoutParams);
