@@ -13,4 +13,4 @@ TODO
 - sound off as default
 - tested on:
   - Debugger: 320 x 480
-  - Samsung Galaxy S4 Mini (Display: 540 x 960)
+  - Samsung Galaxy S4 Mini (Android: 4.2.2, Display: 540 x 960)
