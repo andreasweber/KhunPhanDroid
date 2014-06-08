@@ -24,6 +24,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -69,8 +70,10 @@ public abstract class GameActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(getContentView());
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
 		_boardLayout = (FrameLayout) findViewById(getInnerBoardLayout());
-
+		
 		// locate board in the middle of the screen
 		FrameLayout outerBoardLayout = (FrameLayout) findViewById(getOuterBoardLayout());
 		DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -226,7 +229,7 @@ public abstract class GameActivity extends Activity {
 								x = _oldPos.x * _board_field_size_px; // reset, because we move vertically
 							}
 						}
-						
+
 						boardLayoutParams.leftMargin = x;
 						boardLayoutParams.topMargin = y;
 						v.setLayoutParams(boardLayoutParams);
