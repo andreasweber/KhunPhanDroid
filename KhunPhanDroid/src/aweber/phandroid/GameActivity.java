@@ -80,8 +80,10 @@ public abstract class GameActivity extends Activity {
 		int display_height = metrics.heightPixels;
 		int board_size_px = getBoardHeight();
 		int inner_outer_diff = Math.round(BOARD_INNER_OUTER_DIFF_DP * getResources().getDisplayMetrics().density);
-		int outerBottomMargin = (display_height - board_size_px) / 2;
-		int innerBottomMargin = ((display_height - board_size_px) / 2) + inner_outer_diff;
+		// a little bit nearer to bottom
+		int nb = Math.round(25 * getResources().getDisplayMetrics().density);
+		int outerBottomMargin = ((display_height - board_size_px) / 2) - nb;
+		int innerBottomMargin = (((display_height - board_size_px) / 2) + inner_outer_diff) - nb;
 		((LayoutParams) _boardLayout.getLayoutParams()).bottomMargin = innerBottomMargin;
 		((LayoutParams) outerBoardLayout.getLayoutParams()).bottomMargin = outerBottomMargin;
 

@@ -15,6 +15,6 @@
   - no menu on devices without menu button
   
 0.9 
-- changed minSdkVersion 7 -> 11 
-  - supports action bar for devices without menu button
+- action bar support, changed minSdkVersion 7 -> 11 
   - requires min android version 3.x
+  - use holo theme 
