@@ -37,11 +37,6 @@
 			android:layout_height="fill_parent"
 			android:src="@drawable/background_outer2"
 		/>
-		<FrameLayout
-			android:layout_width="@dimen/piece2_l2" 
-			android:layout_height="10dp" 
-			android:background="@android:color/transparent" 
-			android:layout_gravity="center_horizontal|bottom"/>
 	</FrameLayout>		
 		
 	<FrameLayout 
