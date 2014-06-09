@@ -15,9 +15,12 @@ public class Board {
 	public BoardPos _free1, _free2;
 
 	private SparseArray<Piece> _pieceMap;
+	
+	private int _solutionY; // success Y position for Piece4 
 
-	public Board(int noOfPieces) {
+	public Board(int noOfPieces, int solutionY) {
 		_pieceMap = new SparseArray<Piece>(noOfPieces);
+		_solutionY = solutionY;
 	}
 
 	public void setFreePos(BoardPos free1, BoardPos free2) {
@@ -121,7 +124,7 @@ public class Board {
 		for (int i = 0; i < _pieceMap.size(); i++) {
 			Piece p = _pieceMap.valueAt(i);
 			if (p instanceof Piece22) {
-				if (p.xLeft == 1 && p.yTop == 3) {
+				if (p.xLeft == 1 && p.yTop == _solutionY) {
 					return true;
 				}
 				break;

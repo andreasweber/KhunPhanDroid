@@ -456,18 +456,7 @@ public abstract class GameActivity extends Activity {
 			saveProperties();
 		}
 
-		// show success dialog
-		final Dialog dialog = new Dialog(GameActivity.this);
-		dialog.setContentView(R.layout.dialog_success);
-		final Button button = (Button) dialog.findViewById(R.id.button_new_game);
-		button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				reset();
-				dialog.dismiss();
-			}
-		});
-		dialog.show();
+		showSuccessDialog();
 	}
 
 	protected void showMoves() {
@@ -493,6 +482,21 @@ public abstract class GameActivity extends Activity {
 		});
 		final AlertDialog aboutDialog = builder.create();
 		aboutDialog.show();
+	}
+	
+	private void showSuccessDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(getText(R.string.dialog_success));
+		builder.setNeutralButton(R.string.button_new_game, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				reset();
+				dialog.dismiss();
+				return;
+			}
+		});
+		final AlertDialog successDialog = builder.create();
+		successDialog.show();
 	}
 
 	/** for debugging... */

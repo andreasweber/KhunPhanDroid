@@ -93,7 +93,7 @@ public class Level2Activity extends GameActivity {
 	protected void initBoard() {
 		super.initBoard();
 
-		_board = new Board(16); 
+		_board = new Board(16, 6); 
 
 		// load current positions, use default if not stored in properties
 		_piece11_1 = new Piece11(Integer.valueOf(_props.getProperty("x_L2piece11_1", "0")), Integer.valueOf(_props
