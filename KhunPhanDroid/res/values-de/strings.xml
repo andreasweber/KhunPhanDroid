@@ -5,7 +5,7 @@
 <string name="button_level1">Level 1</string>
 <string name="button_level2">Level 2</string>
 <string name="button_new_game">Neues Spiel</string>
-<string name="dialog_success">- Du hast es geschafft!!! -</string>
+<string name="dialog_success">- Glückwunsch, du hast es geschafft!!! -</string>
 <string name="menu_exit">Beenden</string>
 <string name="menu_restart">Zurück auf Anfang</string>
 
@@ -19,7 +19,7 @@
 <string name="game_moves">Züge</string>
 <string name="game_best">Beste Lösung</string>
 
-<string name="dialog_about">KhunPhanDroid \n (&#169;) Copyright 2011 \n Andreas Weber \n version</string>
+<string name="dialog_about">KhunPhanDroid \n (&#169;) Copyright 2014 \n Andreas Weber \n version</string>
 <string name="dialog_help">Befreie Khun Phan! Versuche den großen Spielstein mit dem roten Punkt zum unteren Ausgang zu bringen. Viel Glück!</string>
 
 </resources>
