@@ -19,7 +19,7 @@
 <string name="game_moves">Züge</string>
 <string name="game_best">Beste Lösung</string>
 
-<string name="dialog_about">KhunPhanDroid \n (&#169;) Copyright 2014 \n Andreas Weber \n version</string>
+<string name="dialog_about">KhunPhanDroid \n (&#169;) 2014 \n Andreas Weber \n version</string>
 <string name="dialog_help">Befreie Khun Phan! Versuche den großen Spielstein mit dem roten Punkt zum unteren Ausgang zu bringen. Viel Glück!</string>
 
 </resources>
