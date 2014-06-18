@@ -12,7 +12,8 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f050000;
-        public static final int textButtonPressed=0x7f050003;
+        public static final int textButton=0x7f050003;
+        public static final int textButtonPressed=0x7f050004;
         /**  color name="textfarbe">#206020</color 
          */
         public static final int textfarbe=0x7f050002;

@@ -5,6 +5,7 @@
     <color name="white">#FFFFFF</color>
     <!-- color name="textfarbe">#206020</color -->
     <color name="textfarbe">#ff8800</color>
-    <color name="textButtonPressed">#ffbb33</color>
+    <color name="textButton">#ffbb33</color>
+    <color name="textButtonPressed">#ff8800</color>
 
 </resources>
