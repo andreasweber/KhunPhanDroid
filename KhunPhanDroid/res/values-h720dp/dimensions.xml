@@ -13,4 +13,11 @@
     <dimen name="inner_width_l2">320dp</dimen>
     <dimen name="outer_height_l2">660dp</dimen>
     <dimen name="outer_width_l2">340dp</dimen>
+    
+    <dimen name="piece1_l3">80dp</dimen>
+    <dimen name="piece2_l3">160dp</dimen>
+    <dimen name="inner_height_l3">560dp</dimen>
+    <dimen name="inner_width_l3">320dp</dimen>
+    <dimen name="outer_height_l3">580dp</dimen>
+    <dimen name="outer_width_l3">340dp</dimen>
 </resources>

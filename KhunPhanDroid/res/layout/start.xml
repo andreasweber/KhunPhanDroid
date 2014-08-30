@@ -24,8 +24,7 @@
 	android:layout_width="wrap_content" 
 	android:layout_height="wrap_content" 
 	android:layout_marginBottom="30dp"
-	android:layout_marginRight="20dp"
-    android:layout_gravity="right|bottom"
+    android:layout_gravity="center|bottom"
     android:background="@drawable/button_shape"
 	android:text="@string/button_level2"
 	android:textSize="20sp"
@@ -33,5 +32,20 @@
     android:textStyle="bold|italic"
 	android:onClick="onClickStartLevel2"
 	/>
-
+ <Button 
+	android:id="@+id/button_level3" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content" 
+	android:layout_marginBottom="30dp"
+	android:layout_marginRight="20dp"
+    android:layout_gravity="right|bottom"
+    android:background="@drawable/button_shape"
+	android:text="@string/button_level3"
+	android:textSize="20sp"
+	android:textColor="@drawable/button_selectable"
+    android:textStyle="bold|italic"
+	android:onClick="onClickStartLevel3"
+	/>
+ 
+ 
 </merge>

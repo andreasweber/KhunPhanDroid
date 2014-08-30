@@ -4,6 +4,7 @@
 <string name="app_name">KhunPhanDroid</string>
 <string name="button_level1">Level 1</string>
 <string name="button_level2">Level 2</string>
+<string name="button_level3">Level 3</string>
 <string name="button_new_game">New game</string>
 <string name="dialog_success">- Congratulations - you got it!!! -</string>
 <string name="menu_exit">Exit</string>

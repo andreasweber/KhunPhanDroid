@@ -13,4 +13,11 @@
     <dimen name="inner_width_l2">180dp</dimen>
     <dimen name="outer_height_l2">380dp</dimen>
     <dimen name="outer_width_l2">200dp</dimen>
+    
+    <dimen name="piece1_l3">45dp</dimen>
+    <dimen name="piece2_l3">90dp</dimen>
+    <dimen name="inner_height_l3">315dp</dimen>
+    <dimen name="inner_width_l3">180dp</dimen>
+    <dimen name="outer_height_l3">335dp</dimen>
+    <dimen name="outer_width_l3">200dp</dimen>
 </resources>
