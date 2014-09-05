@@ -24,7 +24,8 @@
 - shorter move sound
 - added level 3
  
-
+1.0.1
+- fixed board exit of level 3
 
 
 
