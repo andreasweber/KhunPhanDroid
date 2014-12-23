@@ -11,21 +11,20 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int black=0x7f050000;
-        public static final int instructions_details_background=0x7f050008;
-        public static final int instructions_details_text=0x7f050007;
-        public static final int instructions_headings_background=0x7f050006;
-        public static final int instructions_headings_text=0x7f050005;
-        public static final int level_selection_first_background=0x7f05000a;
-        public static final int level_selection_first_text=0x7f050009;
-        public static final int textButton=0x7f050003;
-        public static final int textButtonPressed=0x7f050004;
-        /**  color name="textfarbe">#206020</color 
+        public static final int instructions_details_background=0x7f050006;
+        public static final int instructions_details_text=0x7f050005;
+        public static final int instructions_headings_background=0x7f050004;
+        public static final int instructions_headings_text=0x7f050003;
+        public static final int level_selection_first_background=0x7f050008;
+        public static final int level_selection_first_text=0x7f050007;
+        public static final int textButton=0x7f050001;
+        public static final int textButtonPressed=0x7f050002;
+        /**   
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    
          */
-        public static final int textfarbe=0x7f050002;
-        /**  color name="hintergrund">#FFF1FBE6</color 
-         */
-        public static final int white=0x7f050001;
+        public static final int textfarbe=0x7f050000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

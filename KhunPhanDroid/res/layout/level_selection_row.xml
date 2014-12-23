@@ -7,8 +7,9 @@
     android:paddingBottom="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="5dp"
+    android:paddingTop="10dp"
     android:singleLine="true"
     android:ellipsize="marquee"
     android:textColor="@color/level_selection_first_text"
-    android:textSize="18sp" />
+    android:textStyle="bold"
+    android:textSize="20sp" />
