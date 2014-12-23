@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="Instructions_Goal">Ziel des Spiels</string>
+<string name="Instructions_Goal_Text">Das Ziel des Spiels ist es, den großen quadratischen Spielstein mit dem roten Punkt zum unteren Ausgang zu bringen.</string>
+<string name="Instructions_Rules">Spielregeln</string>
+<string name="Instructions_Rules_Text">Spielsteine können je nach freien Feldern waagrecht oder senkrecht bewegt werden. Spielsteine können nicht gedreht werden und es ist auch nicht möglich andere Spielsteine zu überspringen.</string>
+<string name="Instructions_Menu">Menü</string>
+<string name="Instructions_Menu_Text">Innerhalb eines Levels können über die Menü-Taste unterschiedliche Aktionen durchgeführt werden, z.B. die Spielsteine auf die Startposition zurücksetzen. (Wenn keine Menü-Taste vorhanden ist, kann das gleiche über das sogenannte "Action-Menü" (rechts oben) aufgerufen werden.)</string>
+<string name="Instructions_Levels">Level</string>
+<string name="Instructions_Levels_Text">Die Level können völlig unabhängig voneinander in beliebiger Reihenfolge gespielt werden. Ein höherer Level ist nicht automatisch schwieriger als ein vorheriger.</string>
+<string name="Instructions_Save">Spielstand speichern</string>
+<string name="Instructions_Save_Text">Der Stand in jedem Level wird beim Beenden automatisch gespeichert, egal ob das Spiel über das Menü ("Beenden") oder über die Zurück-Taste verlassen wird.</string>
+<string name="Instructions_Legend">Khun Phan - Die Legende</string>
+<string name="Instructions_Legend_Text">Khun Phan (Phaen/Paen) ist der Held in einer alten thailändischen Legende. Teil der Geschichte ist die Flucht aus einem von neun Wächtern bewachten Gefängnis - darauf basiert das Original-Spiel aus Level 1.</string>
+
+</resources>

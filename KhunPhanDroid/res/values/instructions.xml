@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+<string name="Instructions_Goal">Goal of the game</string>
+<string name="Instructions_Goal_Text">The goal of the game is to move the big piece with the red dot from the upper middle of the board to the exit at the bottom.</string>
+<string name="Instructions_Rules">Rules of the game</string>
+<string name="Instructions_Rules_Text">Pieces can be moved horizontally or vertically, depending on free fields. Pieces can not be rotated and it\'s not possible to jump over other pieces.</string>
+<string name="Instructions_Menu">Menu</string>
+<string name="Instructions_Menu_Text">Within a level several actions can be performed via the menu button, e.g. reset the pieces to their starting position. (If your device has no menu button, the same can be done by the so-called "action menu" in the upper right corner.)</string>
+<string name="Instructions_Levels">Level</string>
+<string name="Instructions_Levels_Text">Levels can be played completely independent of each other and in any order. A higher level is not necessarly more difficult than a previous one.</string>
+<string name="Instructions_Save">Saving the game</string>
+<string name="Instructions_Save_Text">The game position in each level is saved automatically on exit, whether game is finished via menu ("Exit") or via back button on your device.</string>
+<string name="Instructions_Legend">Khun Phan - the legend</string>
+<string name="Instructions_Legend_Text">Khun Phan (Phaen/Paen) is the hero in an old thai legend. In one part of the story, Khun Phan is imprisoned and must escape by getting past nine sentries guarding him - that\'s the basis for the original game represented by level 1.</string>
+
+</resources>

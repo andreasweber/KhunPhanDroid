@@ -7,11 +7,9 @@ import android.view.View;
 
 public class StartActivity extends Activity {
 
-	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 13;
+	private static final int SUB_ACTIVITY_REQUEST_CODE_I = 13;
 
-	private static final int SUB_ACTIVITY_REQUEST_CODE_L2 = 14;
-	
-	private static final int SUB_ACTIVITY_REQUEST_CODE_L3 = 15;
+	private static final int SUB_ACTIVITY_REQUEST_CODE_LS = 14;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,47 +18,33 @@ public class StartActivity extends Activity {
 	}
 
 	/**
-	 * Called when clicking Level1-Button
+	 * Called when clicking Instructions-Button
 	 * 
 	 * @see res/layout/start.xml
 	 */
-	public void onClickStartLevel1(final View v) {
-		final Intent i = new Intent(this, Level1Activity.class);
+	public void onClickStartInstructions(final View v) {
+		final Intent i = new Intent(this, InstructionsActivity.class);
 		// we can't use startActivity() cause we want to react on child activity's finish (see onActivityResult())
-		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_L1);
+		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_I);
 	}
 
 	/**
-	 * Called when clicking Level2-Button
+	 * Called when clicking StartGane-Button
 	 * 
 	 * @see res/layout/start.xml
 	 */
-	public void onClickStartLevel2(final View v) {
-		final Intent i = new Intent(this, Level2Activity.class);
+	public void onClickStartLevelSelection(final View v) {
+		final Intent i = new Intent(this, LevelSelectionActivity.class);
 		// we can't use startActivity() cause we want to react on child activity's finish (see onActivityResult())
-		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_L2);
-	}
-	
-	/**
-	 * Called when clicking Level3-Button
-	 * 
-	 * @see res/layout/start.xml
-	 */
-	public void onClickStartLevel3(final View v) {
-		final Intent i = new Intent(this, Level3Activity.class);
-		// we can't use startActivity() cause we want to react on child activity's finish (see onActivityResult())
-		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_L3);
+		startActivityForResult(i, SUB_ACTIVITY_REQUEST_CODE_LS);
 	}
 
 	/** Called when child activity finishes. */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if ((requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE)
-				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L2 && resultCode == Level2Activity.EXIT_RETURN_CODE)
-				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L3 && resultCode == Level3Activity.EXIT_RETURN_CODE)) {
-			finish(); // 'Beenden' has been chosen in child activity's option menu -> also close parent(=this) activity
+		if (requestCode == SUB_ACTIVITY_REQUEST_CODE_LS && resultCode == LevelSelectionActivity.EXIT_RETURN_CODE) {
+			finish(); // 'Exit' has been chosen in child activity's option menu -> also close parent(=this) activity
 		}
 	}
-
 }

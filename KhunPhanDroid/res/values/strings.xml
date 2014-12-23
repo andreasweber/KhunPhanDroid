@@ -2,21 +2,27 @@
 <resources>
     
 <string name="app_name">KhunPhanDroid</string>
-<string name="button_level1">Level 1</string>
-<string name="button_level2">Level 2</string>
-<string name="button_level3">Level 3</string>
+
+<string name="button_instructions">Instructions</string>
+<string name="button_start_game">Start Game</string>
+
 <string name="button_new_game">New game</string>
 <string name="dialog_success">- Congratulations - you got it!!! -</string>
+
+<string name="header_instructions">Game instructions</string>
+<string name="header_level_selection">Choose a level</string>
+<string name="level0_text">Level 0 - Every beginning is easy</string>
+<string name="level1_text">Level 1 - The escape of Khun Phan</string>
+<string name="level2_text">Level 2 - A long journey</string>
+<string name="level3_text">Level 3 - Only two yellow guards</string>
+<string name="level4_text">Level 4</string>
+
 <string name="menu_exit">Exit</string>
 <string name="menu_restart">Reset</string>
-
-
-
 <string name="menu_sound_on">Sound on</string>
 <string name="menu_sound_off">Sound off</string>
-
-
 <string name="menu_about">About KhunPhanDroid</string>
+
 <string name="game_moves">Moves</string>
 <string name="game_best">Best solution</string>
 
