@@ -5,8 +5,8 @@
     <color name="white">#FFFFFF</color>
     -->
     <color name="textfarbe">#B8860B</color>
-    <color name="textButton">#8B6508</color>
-    <color name="textButtonPressed">#B8860B</color>
+    <color name="textButton">#B8860B</color>
+    <color name="textButtonPressed">#8B6508</color>
     
     <color name="instructions_headings_text">#FFFFFF</color>
     <color name="instructions_headings_background">#8B6508</color>
