@@ -11,10 +11,10 @@
 
 <string name="header_instructions">Game instructions</string>
 <string name="header_level_selection">Choose a level</string>
-<string name="level0_text">Level 0 - Every beginning is easy</string>
-<string name="level1_text">Level 1 - The escape of Khun Phan</string>
-<string name="level2_text">Level 2 - A long journey</string>
-<string name="level3_text">Level 3 - Only two yellow guards</string>
+<string name="level0_text">Every beginning is easy</string>
+<string name="level1_text">The escape of Khun Phan</string>
+<string name="level2_text">A long journey</string>
+<string name="level3_text">Only two yellow guards</string>
 <string name="level4_text">Level 4</string>
 
 <string name="menu_exit">Exit</string>

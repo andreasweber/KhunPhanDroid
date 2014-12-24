@@ -11,10 +11,10 @@
 
 <string name="header_instructions">Spielanleitung</string>
 <string name="header_level_selection">Wähle einen Level</string>
-<string name="level0_text">Level 0 - Aller Anfang ist leicht</string>
-<string name="level1_text">Level 1 - Die Flucht des Khun Phan</string>
-<string name="level2_text">Level 2 - Ein weiter Weg</string>
-<string name="level3_text">Level 3 - Nur zwei gelbe Wächter</string>
+<string name="level0_text">Aller Anfang ist leicht</string>
+<string name="level1_text">Die Flucht des Khun Phan</string>
+<string name="level2_text">Ein weiter Weg</string>
+<string name="level3_text">Nur zwei gelbe Wächter</string>
 <string name="level4_text">Level 4</string>
 
 <string name="menu_exit">Beenden</string>

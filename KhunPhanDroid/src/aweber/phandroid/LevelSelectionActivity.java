@@ -1,6 +1,9 @@
 package aweber.phandroid;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,18 +11,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class LevelSelectionActivity extends Activity {
-	
+
 	public static final int EXIT_RETURN_CODE = 2000;
-	
+
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 21;
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L2 = 22;
-	
+
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L3 = 23;
+
+	private List<Map<String, String>> _levelSelectionData;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +33,19 @@ public class LevelSelectionActivity extends Activity {
 		setContentView(R.layout.activity_level_selection);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+		_levelSelectionData = new ArrayList<Map<String, String>>();
+		add("Level 1", "level1_text");
+		add("Level 2", "level2_text");
+		add("Level 3", "level3_text");
+
+		final String[] fromMapKey = new String[] { "level", "details" };
+		final int[] toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details };
+
+		ListAdapter listAdapter = new SimpleAdapter(this, _levelSelectionData, R.layout.level_selection_row,
+				fromMapKey, toLayoutId);
+
 		final ListView listview = (ListView) findViewById(R.id.listview_level_selection);
-		
-		String[] values = new String[] { getText(R.string.level1_text).toString(), //
-				getText(R.string.level2_text).toString(), //
-				getText(R.string.level3_text).toString() //
-		};
-		final ArrayList<String> list = new ArrayList<String>();
-		for (int i = 0; i < values.length; ++i) {
-			list.add(values[i]);
-		}
-		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.level_selection_row, list);
-		listview.setAdapter(adapter);
+		listview.setAdapter(listAdapter);
 
 		final Intent level1Intent = new Intent(this, Level1Activity.class);
 		final Intent level2Intent = new Intent(this, Level2Activity.class);
@@ -48,19 +55,31 @@ public class LevelSelectionActivity extends Activity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				final String item = ((String) parent.getItemAtPosition(position));
-				if (item != null && item.startsWith("Level 1")) {
-					startActivityForResult(level1Intent, SUB_ACTIVITY_REQUEST_CODE_L1);
-				} else if (item != null && item.startsWith("Level 2")) {
-					startActivityForResult(level2Intent, SUB_ACTIVITY_REQUEST_CODE_L2);
-				} else if (item != null && item.startsWith("Level 3")) {
-					startActivityForResult(level3Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
+				final Map<String, String> item = ((Map<String, String>) parent.getItemAtPosition(position));
+				if (item != null && item.keySet().contains("level")) {
+					String level = item.get("level");
+					if ("Level 1".equals(level)) {
+						startActivityForResult(level1Intent, SUB_ACTIVITY_REQUEST_CODE_L1);
+					} else if ("Level 2".equals(level)) {
+						startActivityForResult(level2Intent, SUB_ACTIVITY_REQUEST_CODE_L2);
+					} else if ("Level 3".equals(level)) {
+						startActivityForResult(level3Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
+					}
 				}
 			}
 
 		});
 	}
-	
+
+	private void add(String levelText, String levelDetailsId) {
+		int detailsId = getResources().getIdentifier(levelDetailsId, "string", getPackageName());
+		String detailsText = getResources().getString(detailsId);
+		Map<String, String> entry = new HashMap<String, String>();
+		entry.put("level", levelText);
+		entry.put("details", detailsText);
+		_levelSelectionData.add(entry);
+	}
+
 	/** Called when child activity finishes. */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
