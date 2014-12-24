@@ -15,5 +15,6 @@
     
     <color name="level_selection_first_text">#FFFFFF</color>
     <color name="level_selection_first_background">#8B6508</color>
+    <color name="level_selection_clicked">#B8860B</color>
    
 </resources>

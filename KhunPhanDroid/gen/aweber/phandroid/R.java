@@ -15,6 +15,7 @@ public final class R {
         public static final int instructions_details_text=0x7f050005;
         public static final int instructions_headings_background=0x7f050004;
         public static final int instructions_headings_text=0x7f050003;
+        public static final int level_selection_clicked=0x7f050009;
         public static final int level_selection_first_background=0x7f050008;
         public static final int level_selection_first_text=0x7f050007;
         public static final int textButton=0x7f050001;
@@ -60,11 +61,12 @@ public final class R {
         public static final int button_selectable=0x7f020006;
         public static final int button_shape=0x7f020007;
         public static final int icon=0x7f020008;
-        public static final int piece11_pic=0x7f020009;
-        public static final int piece12_pic=0x7f02000a;
-        public static final int piece21_pic=0x7f02000b;
-        public static final int piece22_pic=0x7f02000c;
-        public static final int start_pic=0x7f02000d;
+        public static final int level_selection_selectable=0x7f020009;
+        public static final int piece11_pic=0x7f02000a;
+        public static final int piece12_pic=0x7f02000b;
+        public static final int piece21_pic=0x7f02000c;
+        public static final int piece22_pic=0x7f02000d;
+        public static final int start_pic=0x7f02000e;
     }
     public static final class id {
         public static final int InnerBoardLayout=0x7f090008;

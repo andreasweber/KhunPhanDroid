@@ -28,11 +28,11 @@ public class LevelSelectionActivity extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		final ListView listview = (ListView) findViewById(R.id.listview_level_selection);
+		
 		String[] values = new String[] { getText(R.string.level1_text).toString(), //
 				getText(R.string.level2_text).toString(), //
 				getText(R.string.level3_text).toString() //
 		};
-
 		final ArrayList<String> list = new ArrayList<String>();
 		for (int i = 0; i < values.length; ++i) {
 			list.add(values[i]);
