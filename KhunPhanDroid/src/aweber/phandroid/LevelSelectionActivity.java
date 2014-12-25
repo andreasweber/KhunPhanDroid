@@ -19,6 +19,8 @@ public class LevelSelectionActivity extends Activity {
 
 	public static final int EXIT_RETURN_CODE = 2000;
 
+	private static final int SUB_ACTIVITY_REQUEST_CODE_L0 = 20;
+
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 21;
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L2 = 22;
@@ -34,6 +36,7 @@ public class LevelSelectionActivity extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		_levelSelectionData = new ArrayList<Map<String, String>>();
+		add("Level 0", "level0_text");
 		add("Level 1", "level1_text");
 		add("Level 2", "level2_text");
 		add("Level 3", "level3_text");
@@ -47,6 +50,7 @@ public class LevelSelectionActivity extends Activity {
 		final ListView listview = (ListView) findViewById(R.id.listview_level_selection);
 		listview.setAdapter(listAdapter);
 
+		final Intent level0Intent = new Intent(this, Level0Activity.class);
 		final Intent level1Intent = new Intent(this, Level1Activity.class);
 		final Intent level2Intent = new Intent(this, Level2Activity.class);
 		final Intent level3Intent = new Intent(this, Level3Activity.class);
@@ -58,7 +62,9 @@ public class LevelSelectionActivity extends Activity {
 				final Map<String, String> item = ((Map<String, String>) parent.getItemAtPosition(position));
 				if (item != null && item.keySet().contains("level")) {
 					String level = item.get("level");
-					if ("Level 1".equals(level)) {
+					if ("Level 0".equals(level)) {
+						startActivityForResult(level0Intent, SUB_ACTIVITY_REQUEST_CODE_L0);
+					} else if ("Level 1".equals(level)) {
 						startActivityForResult(level1Intent, SUB_ACTIVITY_REQUEST_CODE_L1);
 					} else if ("Level 2".equals(level)) {
 						startActivityForResult(level2Intent, SUB_ACTIVITY_REQUEST_CODE_L2);
@@ -84,12 +90,12 @@ public class LevelSelectionActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if ((requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE)
+		if ((requestCode == SUB_ACTIVITY_REQUEST_CODE_L0 && resultCode == Level0Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L2 && resultCode == Level2Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L3 && resultCode == Level3Activity.EXIT_RETURN_CODE)) {
 			setResult(EXIT_RETURN_CODE, null);
 			finish(); // 'Exit' has been chosen in child activity's option menu -> also close parent(=this) activity
 		}
 	}
-
 }

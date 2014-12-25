@@ -33,6 +33,11 @@
                   android:screenOrientation="portrait">
         </activity>
         
+        <activity android:name=".Level0Activity"
+                  android:label="Level 0"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".Level1Activity"
                   android:label="Level 1"
                   android:theme="@android:style/Theme.Holo"

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+ 	<!-- level 0 + 1 -->   
     <dimen name="piece1_l1">60dp</dimen>
     <dimen name="piece2_l1">120dp</dimen>
     <dimen name="inner_height_l1">300dp</dimen>
@@ -7,6 +9,7 @@
     <dimen name="outer_height_l1">320dp</dimen>
     <dimen name="outer_width_l1">260dp</dimen>
     
+    <!-- level 2 -->
     <dimen name="piece1_l2">45dp</dimen>
     <dimen name="piece2_l2">90dp</dimen>
     <dimen name="inner_height_l2">360dp</dimen>
@@ -14,6 +17,7 @@
     <dimen name="outer_height_l2">380dp</dimen>
     <dimen name="outer_width_l2">200dp</dimen>
     
+    <!-- level 3 -->
     <dimen name="piece1_l3">45dp</dimen>
     <dimen name="piece2_l3">90dp</dimen>
     <dimen name="inner_height_l3">315dp</dimen>

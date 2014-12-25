@@ -513,9 +513,9 @@ public abstract class GameActivity extends Activity {
 	}
 
 	/** for debugging... */
-	private void showFreePositions() {
-		// final TextView txtFreePos = (TextView) findViewById(R.id.txt_freepositions);
-		// txtFreePos.setText(board.getFreePosAsString());
+	protected void showFreePositions() {
+		//final TextView txtFreePos = (TextView) findViewById(R.id.txt_freepositions);
+		//txtFreePos.setText(_board.getFreePosAsString());
 	}
 
 	/** for debugging.. */
