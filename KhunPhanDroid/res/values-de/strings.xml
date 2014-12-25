@@ -6,8 +6,10 @@
 <string name="button_instructions">Anleitung</string>
 <string name="button_start_game">Spiel starten</string>
 
-<string name="button_new_game">Neues Spiel</string>
-<string name="dialog_success">- Glückwunsch, du hast es geschafft!!! -</string>
+<string name="button_success_retry">Gleicher Level</string>
+<string name="button_success_back">Anderer Level</string>
+<string name="dialog_success">Glückwunsch !!!</string>
+<string name="dialog_success_message">Du hast es geschafft! Jetzt kannst du einen anderen Level auswählen oder den gleichen Level nochmal versuchen</string>
 
 <string name="header_instructions">Spielanleitung</string>
 <string name="header_level_selection">Wähle einen Level</string>

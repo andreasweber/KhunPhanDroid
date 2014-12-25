@@ -68,9 +68,9 @@ public abstract class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(getContentView());
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
+
 		_boardLayout = (FrameLayout) findViewById(getInnerBoardLayout());
-		
+
 		// locate board in the middle of the screen
 		FrameLayout outerBoardLayout = (FrameLayout) findViewById(getOuterBoardLayout());
 		DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -162,14 +162,20 @@ public abstract class GameActivity extends Activity {
 	protected abstract boolean containsPieceId(int id);
 
 	protected abstract String getPropBestSolution();
+	
+	protected abstract void exit();
 
-	protected void exit() {
-		if (_playerMove != null) {
-			_playerMove.release();
+	protected void exit(int resultCode) {
+		if (resultCode > 0) {
+			if (_playerMove != null) {
+				_playerMove.release();
+			}
+			if (_playerSuccess != null) {
+				_playerSuccess.release();
+			}
 		}
-		if (_playerSuccess != null) {
-			_playerSuccess.release();
-		}
+		setResult(resultCode, null);
+		finish();
 	}
 
 	protected void initBoard() {
@@ -468,7 +474,7 @@ public abstract class GameActivity extends Activity {
 	}
 
 	private void showAboutDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
 		builder.setMessage(getText(R.string.dialog_help) + "\n\n" + getText(R.string.dialog_about) + " " + _version);
 		builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
 			@Override
@@ -480,15 +486,25 @@ public abstract class GameActivity extends Activity {
 		final AlertDialog aboutDialog = builder.create();
 		aboutDialog.show();
 	}
-	
+
 	private void showSuccessDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(getText(R.string.dialog_success));
-		builder.setNeutralButton(R.string.button_new_game, new DialogInterface.OnClickListener() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
+		builder.setTitle(getText(R.string.dialog_success));
+		builder.setMessage(getText(R.string.dialog_success_message));
+		builder.setPositiveButton(R.string.button_success_retry, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				reset();
 				dialog.dismiss();
+				return;
+			}
+		});
+		builder.setNegativeButton(R.string.button_success_back, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				reset();
+				dialog.dismiss();
+				exit(0);
 				return;
 			}
 		});

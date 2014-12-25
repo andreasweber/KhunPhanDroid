@@ -6,8 +6,10 @@
 <string name="button_instructions">Instructions</string>
 <string name="button_start_game">Start Game</string>
 
-<string name="button_new_game">New game</string>
-<string name="dialog_success">- Congratulations - you got it!!! -</string>
+<string name="button_success_retry">Retry same level</string>
+<string name="button_success_back">Try other level</string>
+<string name="dialog_success">Congratulations !!!</string>
+<string name="dialog_success_message">You got it! Now you can try another level or retry the same level</string>
 
 <string name="header_instructions">Game instructions</string>
 <string name="header_level_selection">Choose a level</string>

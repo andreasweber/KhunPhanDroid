@@ -196,9 +196,7 @@ public class Level3Activity extends GameActivity {
 
 	@Override
 	protected void exit() {
-		super.exit();
-		setResult(EXIT_RETURN_CODE, null);
-		finish();
+		super.exit(EXIT_RETURN_CODE);
 	}
 
 	@Override
