@@ -1,5 +1,7 @@
 package aweber.phandroid.game;
 
+// X
+// X
 public class Piece12 extends Piece {
 
 	public Piece12(int xLeft, int yTop) {
@@ -8,7 +10,7 @@ public class Piece12 extends Piece {
 
 	@Override
 	public boolean canMove(BoardPos free1, BoardPos free2) {
-		// can move horizontally - check if both neighbours on x are free
+		// can move horizontally - check if both neighbors on x are free
 		boolean xFree = ((xLeft - 1 == free1.x) && (xLeft - 1 == free2.x))
 				|| ((xLeft + 1 == free1.x) && (xLeft + 1 == free2.x));
 		boolean yFree = ((yTop == free1.y) && (yTop + 1 == free2.y)) || ((yTop == free2.y) && (yTop + 1 == free1.y));

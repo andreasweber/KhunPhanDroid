@@ -8,7 +8,7 @@ public class Piece22 extends Piece {
 
 	@Override
 	public boolean canMove(BoardPos free1, BoardPos free2) {
-		// move vertically - check if both neighbours on y are free
+		// move vertically - check if both neighbors on y are free
 		if ((free1.equalPos(xLeft, yTop - 1) && free2.equalPos(xLeft + 1, yTop - 1))
 				|| (free1.equalPos(xLeft + 1, yTop - 1) && free2.equalPos(xLeft, yTop - 1))) {
 			return true;
@@ -17,7 +17,7 @@ public class Piece22 extends Piece {
 				|| (free1.equalPos(xLeft + 1, yTop + 2) && free2.equalPos(xLeft, yTop + 2))) {
 			return true;
 		}
-		// move horizontally - check if both neighbours on x are free
+		// move horizontally - check if both neighbors on x are free
 		if ((free1.equalPos(xLeft - 1, yTop) && free2.equalPos(xLeft - 1, yTop + 1))
 				|| (free1.equalPos(xLeft - 1, yTop + 1) && free2.equalPos(xLeft - 1, yTop))) {
 			return true;
