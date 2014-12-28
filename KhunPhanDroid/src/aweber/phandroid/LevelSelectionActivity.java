@@ -75,7 +75,7 @@ public class LevelSelectionActivity extends Activity {
 					} else if ("Level 3".equals(level)) {
 						startActivityForResult(level3Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
 					} else if ("Level 4".equals(level)) {
-						startActivityForResult(level4Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
+						startActivityForResult(level4Intent, SUB_ACTIVITY_REQUEST_CODE_L4);
 					}
 				}
 			}
