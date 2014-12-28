@@ -27,6 +27,8 @@ public class LevelSelectionActivity extends Activity {
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L3 = 23;
 
+	private static final int SUB_ACTIVITY_REQUEST_CODE_L4 = 24;
+
 	private List<Map<String, String>> _levelSelectionData;
 
 	@Override
@@ -40,6 +42,7 @@ public class LevelSelectionActivity extends Activity {
 		add("Level 1", "level1_text");
 		add("Level 2", "level2_text");
 		add("Level 3", "level3_text");
+		add("Level 4", "level4_text");
 
 		final String[] fromMapKey = new String[] { "level", "details" };
 		final int[] toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details };
@@ -54,6 +57,7 @@ public class LevelSelectionActivity extends Activity {
 		final Intent level1Intent = new Intent(this, Level1Activity.class);
 		final Intent level2Intent = new Intent(this, Level2Activity.class);
 		final Intent level3Intent = new Intent(this, Level3Activity.class);
+		final Intent level4Intent = new Intent(this, Level4Activity.class);
 
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -70,6 +74,8 @@ public class LevelSelectionActivity extends Activity {
 						startActivityForResult(level2Intent, SUB_ACTIVITY_REQUEST_CODE_L2);
 					} else if ("Level 3".equals(level)) {
 						startActivityForResult(level3Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
+					} else if ("Level 4".equals(level)) {
+						startActivityForResult(level4Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
 					}
 				}
 			}
@@ -93,7 +99,8 @@ public class LevelSelectionActivity extends Activity {
 		if ((requestCode == SUB_ACTIVITY_REQUEST_CODE_L0 && resultCode == Level0Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L1 && resultCode == Level1Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L2 && resultCode == Level2Activity.EXIT_RETURN_CODE)
-				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L3 && resultCode == Level3Activity.EXIT_RETURN_CODE)) {
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L3 && resultCode == Level3Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L4 && resultCode == Level4Activity.EXIT_RETURN_CODE)) {
 			setResult(EXIT_RETURN_CODE, null);
 			finish(); // 'Exit' has been chosen in child activity's option menu -> also close parent(=this) activity
 		}

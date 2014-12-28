@@ -53,6 +53,11 @@
                   android:theme="@android:style/Theme.Holo"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Level4Activity"
+                  android:label="Level 4"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="portrait">
+        </activity>
 
     </application>
 
