@@ -11,7 +11,7 @@
         android:stretchColumns="1" >
 
         <TableRow>
-            
+
             <TextView
                 android:id="@+id/txt_moves4"
                 android:gravity="left"
@@ -24,7 +24,6 @@
                 android:textColor="@color/textfarbe"
                 android:textSize="16sp" />
         </TableRow>
-        
     </TableLayout>
 
     <FrameLayout
@@ -49,6 +48,38 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:src="@drawable/background_inner2" />
+
+        <View
+            android:id="@+id/L4Piece3lo"
+            android:layout_width="@dimen/piece2_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3lo_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L4Piece3lu"
+            android:layout_width="@dimen/piece2_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3lu_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L4Piece3ro"
+            android:layout_width="@dimen/piece2_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3ro_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L4Piece3ru"
+            android:layout_width="@dimen/piece2_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3ru_pic" >
+        </View>
 
         <View
             android:id="@+id/L4Piece11_1"
@@ -128,35 +159,6 @@
             android:layout_height="@dimen/piece1_l2"
             android:layout_gravity="top"
             android:background="@drawable/piece21_pic" >
-        </View>
-        
-        <View
-            android:id="@+id/L4Piece3lo"
-            android:layout_width="@dimen/piece2_l2"
-            android:layout_height="@dimen/piece2_l2"
-            android:layout_gravity="top"
-            android:background="@drawable/piece3lo_pic" >
-        </View>
-        <View
-            android:id="@+id/L4Piece3lu"
-            android:layout_width="@dimen/piece2_l2"
-            android:layout_height="@dimen/piece2_l2"
-            android:layout_gravity="top"
-            android:background="@drawable/piece3lu_pic" >
-        </View>
-        <View
-            android:id="@+id/L4Piece3ro"
-            android:layout_width="@dimen/piece2_l2"
-            android:layout_height="@dimen/piece2_l2"
-            android:layout_gravity="top"
-            android:background="@drawable/piece3ro_pic" >
-        </View>
-        <View
-            android:id="@+id/L4Piece3ru"
-            android:layout_width="@dimen/piece2_l2"
-            android:layout_height="@dimen/piece2_l2"
-            android:layout_gravity="top"
-            android:background="@drawable/piece3ru_pic" >
         </View>
 
         <View

@@ -66,10 +66,10 @@ public class Level4Activity extends GameActivity {
 		_props.setProperty("y_L4piece12_2", String.valueOf(_piece12_2.yTop));
 		_props.setProperty("x_L4piece12_3", String.valueOf(_piece12_3.xLeft));
 		_props.setProperty("y_L4piece12_3", String.valueOf(_piece12_3.yTop));
-		
+
 		_props.setProperty("x_L4piece21_1", String.valueOf(_piece21_1.xLeft));
 		_props.setProperty("y_L4piece21_1", String.valueOf(_piece21_1.yTop));
-		
+
 		_props.setProperty("x_L4piece3lo", String.valueOf(_piece3lo.xLeft));
 		_props.setProperty("y_L4piece3lo", String.valueOf(_piece3lo.yTop));
 		_props.setProperty("x_L4piece3lu", String.valueOf(_piece3lu.xLeft));
@@ -95,9 +95,23 @@ public class Level4Activity extends GameActivity {
 	protected void initBoard() {
 		super.initBoard();
 
-		_board = new Board(16, 6); 
+		_board = new Board(16, 6);
 
 		// load current positions, use default if not stored in properties
+
+		_piece3lo = new Piece3lo(Integer.valueOf(_props.getProperty("x_L4piece3lo", "2")), Integer.valueOf(_props
+				.getProperty("y_L4piece3lo", "5"))); // default pos (2,5)
+		addPiece(R.id.L4Piece3lo, _piece3lo);
+		_piece3lu = new Piece3lu(Integer.valueOf(_props.getProperty("x_L4piece3lu", "2")), Integer.valueOf(_props
+				.getProperty("y_L4piece3lu", "3"))); // default pos (2,3)
+		addPiece(R.id.L4Piece3lu, _piece3lu);
+		_piece3ro = new Piece3ro(Integer.valueOf(_props.getProperty("x_L4piece3ro", "2")), Integer.valueOf(_props
+				.getProperty("y_L4piece3ro", "2"))); // default pos (2,2)
+		addPiece(R.id.L4Piece3ro, _piece3ro);
+		_piece3ru = new Piece3ru(Integer.valueOf(_props.getProperty("x_L4piece3ru", "2")), Integer.valueOf(_props
+				.getProperty("y_L4piece3ru", "6"))); // default pos (2,6)
+		addPiece(R.id.L4Piece3ru, _piece3ru);
+
 		_piece11_1 = new Piece11(Integer.valueOf(_props.getProperty("x_L4piece11_1", "0")), Integer.valueOf(_props
 				.getProperty("y_L4piece11_1", "2"))); // default pos (0,2)
 		addPiece(R.id.L4Piece11_1, _piece11_1);
@@ -126,23 +140,10 @@ public class Level4Activity extends GameActivity {
 		_piece12_3 = new Piece12(Integer.valueOf(_props.getProperty("x_L4piece12_3", "0")), Integer.valueOf(_props
 				.getProperty("y_L4piece12_3", "6"))); // default pos (0,6)
 		addPiece(R.id.L4Piece12_3, _piece12_3);
-	
+
 		_piece21_1 = new Piece21(Integer.valueOf(_props.getProperty("x_L4piece21_1", "0")), Integer.valueOf(_props
 				.getProperty("y_L4piece21_1", "3"))); // default pos (0,3)
 		addPiece(R.id.L4Piece21_1, _piece21_1);
-	
-		_piece3lo = new Piece3lo(Integer.valueOf(_props.getProperty("x_L4piece3lo", "2")), Integer.valueOf(_props
-				.getProperty("y_L4piece3lo", "5"))); // default pos (2,5)
-		addPiece(R.id.L4Piece3lo, _piece3lo);
-		_piece3lu = new Piece3lu(Integer.valueOf(_props.getProperty("x_L4piece3lu", "2")), Integer.valueOf(_props
-				.getProperty("y_L4piece3lu", "3"))); // default pos (2,3)
-		addPiece(R.id.L4Piece3lu, _piece3lu);
-		_piece3ro = new Piece3ro(Integer.valueOf(_props.getProperty("x_L4piece3ro", "2")), Integer.valueOf(_props
-				.getProperty("y_L4piece3ro", "2"))); // default pos (2,2)
-		addPiece(R.id.L4Piece3ro, _piece3ro);
-		_piece3ru = new Piece3ru(Integer.valueOf(_props.getProperty("x_L4piece3ru", "2")), Integer.valueOf(_props
-				.getProperty("y_L4piece3ru", "6"))); // default pos (2,6)
-		addPiece(R.id.L4Piece3ru, _piece3ru);
 
 		_piece22 = new Piece22(Integer.valueOf(_props.getProperty("x_L4piece22", "1")), Integer.valueOf(_props
 				.getProperty("y_L4piece22", "0"))); // default pos (1,0)
@@ -190,10 +191,10 @@ public class Level4Activity extends GameActivity {
 		_props.remove("y_L4piece12_2");
 		_props.remove("x_L4piece12_3");
 		_props.remove("y_L4piece12_3");
-		
+
 		_props.remove("x_L4piece21_1");
 		_props.remove("y_L4piece21_1");
-		
+
 		_props.remove("x_L4piece3lu");
 		_props.remove("y_L4piece3lu");
 		_props.remove("x_L4piece3lo");
