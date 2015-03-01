@@ -18,6 +18,8 @@
 <string name="level2_text">The more danger, the more honor</string>
 <string name="level3_text">Only two yellow guards</string>
 <string name="level4_text">New guards crawling around</string>
+<string name="level5_text">Passing the barrier</string>
+<string name="level6_text">Frame of guards</string>
 
 <string name="menu_exit">Exit</string>
 <string name="menu_restart">Reset</string>

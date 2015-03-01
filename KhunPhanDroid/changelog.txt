@@ -30,3 +30,6 @@
 1.1
 - added level selection and instruction activity
 - added level 0 and level 4
+
+1.2
+- added level 5 and level 6

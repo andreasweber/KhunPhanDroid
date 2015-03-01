@@ -49,10 +49,10 @@ public final class R {
         /**  level 0 + 1 
          */
         public static final int piece1_l1=0x7f060000;
-        /**  level 2 + 4 
+        /**  level 2 + 4 + 6 
          */
         public static final int piece1_l2=0x7f060006;
-        /**  level 3 
+        /**  level 3 + 5
          */
         public static final int piece1_l3=0x7f06000c;
         public static final int piece2_l1=0x7f060001;
@@ -86,6 +86,8 @@ public final class R {
         public static final int InnerBoardLayout2=0x7f090027;
         public static final int InnerBoardLayout3=0x7f09003c;
         public static final int InnerBoardLayout4=0x7f09004e;
+        public static final int InnerBoardLayout5=0x7f090062;
+        public static final int InnerBoardLayout6=0x7f090075;
         public static final int L0Piece11_1=0x7f090009;
         public static final int L0Piece11_2=0x7f09000a;
         public static final int L0Piece11_3=0x7f09000b;
@@ -141,16 +143,50 @@ public final class R {
         public static final int L4Piece3lu=0x7f090050;
         public static final int L4Piece3ro=0x7f090051;
         public static final int L4Piece3ru=0x7f090052;
+        public static final int L5Piece11_1=0x7f090065;
+        public static final int L5Piece11_2=0x7f090066;
+        public static final int L5Piece11_3=0x7f090067;
+        public static final int L5Piece11_4=0x7f090068;
+        public static final int L5Piece11_5=0x7f090069;
+        public static final int L5Piece11_6=0x7f09006a;
+        public static final int L5Piece12_1=0x7f09006b;
+        public static final int L5Piece12_2=0x7f09006c;
+        public static final int L5Piece12_3=0x7f09006d;
+        public static final int L5Piece12_4=0x7f09006e;
+        public static final int L5Piece12_5=0x7f09006f;
+        public static final int L5Piece22=0x7f090070;
+        public static final int L5Piece3lu=0x7f090063;
+        public static final int L5Piece3ru=0x7f090064;
+        public static final int L6Piece11_1=0x7f09007a;
+        public static final int L6Piece11_2=0x7f09007b;
+        public static final int L6Piece11_3=0x7f09007c;
+        public static final int L6Piece11_4=0x7f09007d;
+        public static final int L6Piece11_5=0x7f09007e;
+        public static final int L6Piece11_6=0x7f09007f;
+        public static final int L6Piece11_7=0x7f090080;
+        public static final int L6Piece11_8=0x7f090081;
+        public static final int L6Piece12_1=0x7f090082;
+        public static final int L6Piece21_1=0x7f090083;
+        public static final int L6Piece21_2=0x7f090084;
+        public static final int L6Piece22=0x7f090085;
+        public static final int L6Piece3lo=0x7f090076;
+        public static final int L6Piece3lu=0x7f090077;
+        public static final int L6Piece3ro=0x7f090078;
+        public static final int L6Piece3ru=0x7f090079;
         public static final int Level0Layout=0x7f090004;
         public static final int Level1Layout=0x7f090014;
         public static final int Level2Layout=0x7f090023;
         public static final int Level3Layout=0x7f090038;
         public static final int Level4Layout=0x7f09004a;
+        public static final int Level5Layout=0x7f09005e;
+        public static final int Level6Layout=0x7f090071;
         public static final int OuterBoardLayout=0x7f090017;
         public static final int OuterBoardLayout0=0x7f090007;
         public static final int OuterBoardLayout2=0x7f090026;
         public static final int OuterBoardLayout3=0x7f09003b;
         public static final int OuterBoardLayout4=0x7f09004d;
+        public static final int OuterBoardLayout5=0x7f090061;
+        public static final int OuterBoardLayout6=0x7f090074;
         public static final int Piece11_1=0x7f090019;
         public static final int Piece11_2=0x7f09001a;
         public static final int Piece11_3=0x7f09001b;
@@ -161,28 +197,32 @@ public final class R {
         public static final int Piece12_4=0x7f090020;
         public static final int Piece21=0x7f090021;
         public static final int Piece22=0x7f090022;
-        public static final int button_instructions=0x7f090060;
-        public static final int button_level_selection=0x7f090061;
+        public static final int button_instructions=0x7f090088;
+        public static final int button_level_selection=0x7f090089;
         public static final int instruction_list_details_text=0x7f090002;
         public static final int lblListHeader=0x7f090003;
-        public static final int level_selection_row_text=0x7f09005e;
-        public static final int level_selection_row_text_details=0x7f09005f;
+        public static final int level_selection_row_text=0x7f090086;
+        public static final int level_selection_row_text_details=0x7f090087;
         public static final int listview_instructions=0x7f090000;
         public static final int listview_level_selection=0x7f090001;
-        public static final int opt_about=0x7f090065;
-        public static final int opt_finish=0x7f090064;
-        public static final int opt_restart=0x7f090062;
-        public static final int opt_sound=0x7f090063;
+        public static final int opt_about=0x7f09008d;
+        public static final int opt_finish=0x7f09008c;
+        public static final int opt_restart=0x7f09008a;
+        public static final int opt_sound=0x7f09008b;
         public static final int txt_best_solution=0x7f090016;
         public static final int txt_best_solution0=0x7f090006;
         public static final int txt_best_solution2=0x7f090025;
         public static final int txt_best_solution3=0x7f09003a;
         public static final int txt_best_solution4=0x7f09004c;
+        public static final int txt_best_solution5=0x7f090060;
+        public static final int txt_best_solution6=0x7f090073;
         public static final int txt_moves=0x7f090015;
         public static final int txt_moves0=0x7f090005;
         public static final int txt_moves2=0x7f090024;
         public static final int txt_moves3=0x7f090039;
         public static final int txt_moves4=0x7f09004b;
+        public static final int txt_moves5=0x7f09005f;
+        public static final int txt_moves6=0x7f090072;
     }
     public static final class layout {
         public static final int activity_instructions=0x7f030000;
@@ -194,8 +234,10 @@ public final class R {
         public static final int level2=0x7f030006;
         public static final int level3=0x7f030007;
         public static final int level4=0x7f030008;
-        public static final int level_selection_row=0x7f030009;
-        public static final int start=0x7f03000a;
+        public static final int level5=0x7f030009;
+        public static final int level6=0x7f03000a;
+        public static final int level_selection_row=0x7f03000b;
+        public static final int start=0x7f03000c;
     }
     public static final class menu {
         public static final int game_menu=0x7f080000;
@@ -222,12 +264,12 @@ public final class R {
         public static final int button_start_game=0x7f07000e;
         public static final int button_success_back=0x7f070010;
         public static final int button_success_retry=0x7f07000f;
-        public static final int dialog_about=0x7f070021;
-        public static final int dialog_help=0x7f070022;
+        public static final int dialog_about=0x7f070023;
+        public static final int dialog_help=0x7f070024;
         public static final int dialog_success=0x7f070011;
         public static final int dialog_success_message=0x7f070012;
-        public static final int game_best=0x7f070020;
-        public static final int game_moves=0x7f07001f;
+        public static final int game_best=0x7f070022;
+        public static final int game_moves=0x7f070021;
         public static final int header_instructions=0x7f070013;
         public static final int header_level_selection=0x7f070014;
         public static final int level0_text=0x7f070015;
@@ -235,10 +277,12 @@ public final class R {
         public static final int level2_text=0x7f070017;
         public static final int level3_text=0x7f070018;
         public static final int level4_text=0x7f070019;
-        public static final int menu_about=0x7f07001e;
-        public static final int menu_exit=0x7f07001a;
-        public static final int menu_restart=0x7f07001b;
-        public static final int menu_sound_off=0x7f07001d;
-        public static final int menu_sound_on=0x7f07001c;
+        public static final int level5_text=0x7f07001a;
+        public static final int level6_text=0x7f07001b;
+        public static final int menu_about=0x7f070020;
+        public static final int menu_exit=0x7f07001c;
+        public static final int menu_restart=0x7f07001d;
+        public static final int menu_sound_off=0x7f07001f;
+        public static final int menu_sound_on=0x7f07001e;
     }
 }

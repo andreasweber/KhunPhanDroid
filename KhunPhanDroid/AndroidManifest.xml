@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      android:versionCode="110"
-      android:versionName="1.1"
+      android:versionCode="120"
+      android:versionName="1.2"
       android:installLocation="auto" 
       package="aweber.phandroid">
       
@@ -55,6 +55,16 @@
         </activity>
         <activity android:name=".Level4Activity"
                   android:label="Level 4"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Level5Activity"
+                  android:label="Level 5"
+                  android:theme="@android:style/Theme.Holo"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Level6Activity"
+                  android:label="Level 6"
                   android:theme="@android:style/Theme.Holo"
                   android:screenOrientation="portrait">
         </activity>

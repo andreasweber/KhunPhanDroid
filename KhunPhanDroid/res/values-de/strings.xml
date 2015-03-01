@@ -18,6 +18,8 @@
 <string name="level2_text">Viel Feind viel Ehr\'</string>
 <string name="level3_text">Nur zwei gelbe Wächter</string>
 <string name="level4_text">Neue Wächter kriechen herum</string>
+<string name="level5_text">An der Barriere vorbei</string>
+<string name="level6_text">Umrahmt von Wächtern</string>
 
 <string name="menu_exit">Beenden</string>
 <string name="menu_restart">Rücksetzen auf Start</string>

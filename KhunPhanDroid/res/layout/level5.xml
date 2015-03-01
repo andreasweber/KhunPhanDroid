@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Level5Layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:stretchColumns="1" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/txt_moves5"
+                android:gravity="left"
+                android:textColor="@color/textfarbe"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_best_solution5"
+                android:gravity="right"
+                android:textColor="@color/textfarbe"
+                android:textSize="16sp" />
+        </TableRow>
+        <!--
+        for debugging 
+	    <TableRow>
+	    	<TextView android:text="Free Positions :"/>
+	    	<TextView android:id="@+id/txt_freepositions"/>
+	    </TableRow>
+        -->
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/OuterBoardLayout5"
+        android:layout_width="@dimen/outer_width_l3"
+        android:layout_height="@dimen/outer_height_l3"
+        android:layout_gravity="center_horizontal|bottom" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/background_outer3" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/InnerBoardLayout5"
+        android:layout_width="@dimen/inner_width_l3"
+        android:layout_height="@dimen/inner_height_l3"
+        android:layout_gravity="center_horizontal|bottom" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/background_inner3" />
+
+        <View
+            android:id="@+id/L5Piece3lu"
+            android:layout_width="@dimen/piece2_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3lu_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece3ru"
+            android:layout_width="@dimen/piece2_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece3ru_pic" >
+        </View>
+        
+        <View
+            android:id="@+id/L5Piece11_1"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece11_2"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece11_3"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece11_4"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece11_5"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece11_6"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece1_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece12_1"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece12_2"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece12_3"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece12_4"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece12_5"
+            android:layout_width="@dimen/piece1_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L5Piece22"
+            android:layout_width="@dimen/piece2_l3"
+            android:layout_height="@dimen/piece2_l3"
+            android:layout_gravity="top"
+            android:background="@drawable/piece22_pic" >
+        </View>
+    </FrameLayout>
+
+</FrameLayout>
