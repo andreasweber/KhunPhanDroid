@@ -86,8 +86,6 @@ public abstract class GameActivity extends Activity {
 
 		_board_field_size_px = Math.round(getBoardFieldSize());
 
-		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
-		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
 		_version = getVersion();
 
 		initBoard();
@@ -144,7 +142,25 @@ public abstract class GameActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		_playerMove = MediaPlayer.create(GameActivity.this, R.raw.move);
+		_playerSuccess = MediaPlayer.create(GameActivity.this, R.raw.success);
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if (_playerMove != null) {
+			_playerMove.release();
+		}
+		if (_playerSuccess != null) {
+			_playerSuccess.release();
+		}
+	}
+	
 	protected abstract int getContentView();
 
 	protected abstract int getInnerBoardLayout();
