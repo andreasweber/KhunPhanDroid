@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,21 +20,31 @@ public class LevelSelectionActivity extends Activity {
 
 	public static final int EXIT_RETURN_CODE = 2000;
 
+	private static final String LEVEL_0 = "Level 0";
+	private static final String LEVEL_1 = "Level 1";
+	private static final String LEVEL_2 = "Level 2";
+	private static final String LEVEL_3 = "Level 3";
+	private static final String LEVEL_4 = "Level 4";
+	private static final String LEVEL_5 = "Level 5";
+	private static final String LEVEL_6 = "Level 6";
+
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L0 = 20;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 21;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L2 = 22;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L3 = 23;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L4 = 24;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L5 = 25;
-
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L6 = 26;
 
 	private List<Map<String, String>> _levelSelectionData;
+
+	private Map<String, Intent> _intents;
+	
+	/** keys for data. */
+	private String[] _fromMapKeys;
+	
+	/** Ids of textfields where data values are written. */
+	private int[] _toLayoutId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,66 +52,94 @@ public class LevelSelectionActivity extends Activity {
 		setContentView(R.layout.activity_level_selection);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+		_intents = new HashMap<String, Intent>(7);
+		_intents.put(LEVEL_0, new Intent(this, Level0Activity.class));
+		_intents.put(LEVEL_1, new Intent(this, Level1Activity.class));
+		_intents.put(LEVEL_2, new Intent(this, Level2Activity.class));
+		_intents.put(LEVEL_3, new Intent(this, Level3Activity.class));
+		_intents.put(LEVEL_4, new Intent(this, Level4Activity.class));
+		_intents.put(LEVEL_5, new Intent(this, Level5Activity.class));
+		_intents.put(LEVEL_6, new Intent(this, Level6Activity.class));
+
+		_fromMapKeys = new String[] { "level", "details", "best" };
+		_toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details,
+				R.id.level_selection_row_best };
+		
+		createLevelList();
+	}
+
+	@Override
+	/** overwrite to update level list, cause 'best solution' may have changed. */
+	protected void onResume() {
+		super.onResume();
+		createLevelList();
+	}
+
+	private void createLevelList() {
+		final Properties props = PropertiesHandler.loadProperties(this);
+		final String best0 = props.getProperty(Level0Activity.PROP_BEST) != null ? props
+				.getProperty(Level0Activity.PROP_BEST) : "---";
+		final String best1 = props.getProperty(Level1Activity.PROP_BEST) != null ? props
+				.getProperty(Level1Activity.PROP_BEST) : "---";
+		final String best2 = props.getProperty(Level2Activity.PROP_BEST) != null ? props
+				.getProperty(Level2Activity.PROP_BEST) : "---";
+		final String best3 = props.getProperty(Level3Activity.PROP_BEST) != null ? props
+				.getProperty(Level3Activity.PROP_BEST) : "---";
+		final String best4 = props.getProperty(Level4Activity.PROP_BEST) != null ? props
+				.getProperty(Level4Activity.PROP_BEST) : "---";
+		final String best5 = props.getProperty(Level5Activity.PROP_BEST) != null ? props
+				.getProperty(Level5Activity.PROP_BEST) : "---";
+		final String best6 = props.getProperty(Level6Activity.PROP_BEST) != null ? props
+				.getProperty(Level6Activity.PROP_BEST) : "---";
+
 		_levelSelectionData = new ArrayList<Map<String, String>>();
-		add("Level 0", "level0_text");
-		add("Level 1", "level1_text");
-		add("Level 2", "level2_text");
-		add("Level 3", "level3_text");
-		add("Level 4", "level4_text");
-		add("Level 5", "level5_text");
-		add("Level 6", "level6_text");
+		add(LEVEL_0, "level0_text", "(" + best0 + ")");
+		add(LEVEL_1, "level1_text", "(" + best1 + ")");
+		add(LEVEL_2, "level2_text", "(" + best2 + ")");
+		add(LEVEL_3, "level3_text", "(" + best3 + ")");
+		add(LEVEL_4, "level4_text", "(" + best4 + ")");
+		add(LEVEL_5, "level5_text", "(" + best5 + ")");
+		add(LEVEL_6, "level6_text", "(" + best6 + ")");
 
-		final String[] fromMapKey = new String[] { "level", "details" };
-		final int[] toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details };
-
-		ListAdapter listAdapter = new SimpleAdapter(this, _levelSelectionData, R.layout.level_selection_row,
-				fromMapKey, toLayoutId);
-
+		final ListAdapter listAdapter = new SimpleAdapter(this, _levelSelectionData, R.layout.level_selection_row,
+				_fromMapKeys, _toLayoutId);
 		final ListView listview = (ListView) findViewById(R.id.listview_level_selection);
 		listview.setAdapter(listAdapter);
-
-		final Intent level0Intent = new Intent(this, Level0Activity.class);
-		final Intent level1Intent = new Intent(this, Level1Activity.class);
-		final Intent level2Intent = new Intent(this, Level2Activity.class);
-		final Intent level3Intent = new Intent(this, Level3Activity.class);
-		final Intent level4Intent = new Intent(this, Level4Activity.class);
-		final Intent level5Intent = new Intent(this, Level5Activity.class);
-		final Intent level6Intent = new Intent(this, Level6Activity.class);
-
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 				final Map<String, String> item = ((Map<String, String>) parent.getItemAtPosition(position));
 				if (item != null && item.keySet().contains("level")) {
-					String level = item.get("level");
-					if ("Level 0".equals(level)) {
-						startActivityForResult(level0Intent, SUB_ACTIVITY_REQUEST_CODE_L0);
-					} else if ("Level 1".equals(level)) {
-						startActivityForResult(level1Intent, SUB_ACTIVITY_REQUEST_CODE_L1);
-					} else if ("Level 2".equals(level)) {
-						startActivityForResult(level2Intent, SUB_ACTIVITY_REQUEST_CODE_L2);
-					} else if ("Level 3".equals(level)) {
-						startActivityForResult(level3Intent, SUB_ACTIVITY_REQUEST_CODE_L3);
-					} else if ("Level 4".equals(level)) {
-						startActivityForResult(level4Intent, SUB_ACTIVITY_REQUEST_CODE_L4);
-					} else if ("Level 5".equals(level)) {
-						startActivityForResult(level5Intent, SUB_ACTIVITY_REQUEST_CODE_L5);
-					} else if ("Level 6".equals(level)) {
-						startActivityForResult(level6Intent, SUB_ACTIVITY_REQUEST_CODE_L6);
+					final String level = item.get("level");
+					final Intent intent = _intents.get(level);
+					if (LEVEL_0.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L0);
+					} else if (LEVEL_1.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L1);
+					} else if (LEVEL_2.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L2);
+					} else if (LEVEL_3.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L3);
+					} else if (LEVEL_4.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L4);
+					} else if (LEVEL_5.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L5);
+					} else if (LEVEL_6.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L6);
 					}
 				}
 			}
-
 		});
 	}
 
-	private void add(String levelText, String levelDetailsId) {
-		int detailsId = getResources().getIdentifier(levelDetailsId, "string", getPackageName());
-		String detailsText = getResources().getString(detailsId);
-		Map<String, String> entry = new HashMap<String, String>();
+	private void add(String levelText, String levelDetailsId, String bestText) {
+		final int detailsId = getResources().getIdentifier(levelDetailsId, "string", getPackageName());
+		final String detailsText = getResources().getString(detailsId);
+		final Map<String, String> entry = new HashMap<String, String>();
 		entry.put("level", levelText);
 		entry.put("details", detailsText);
+		entry.put("best", bestText);
 		_levelSelectionData.add(entry);
 	}
 

@@ -21,7 +21,7 @@ public class Level3Activity extends GameActivity {
 
 	public static final int EXIT_RETURN_CODE = 4713;
 
-	private static final String PROP_BEST = "best3"; // property where to store best solution of Level 3
+	public static final String PROP_BEST = "best3"; // property where to store best solution of Level 3
 
 	private static final String PROP_MOVES = "moves3"; // property where to store current moves of Level 3
 
@@ -142,7 +142,7 @@ public class Level3Activity extends GameActivity {
 		if (!_props.containsKey(PROP_BEST)) {
 			// property entry doesn't exist yet, create it
 			_props.setProperty(PROP_BEST, "---");
-			saveProperties();
+			PropertiesHandler.saveProperties(this, _props);
 		}
 		showBestSolution();
 

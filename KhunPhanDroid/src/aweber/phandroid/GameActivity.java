@@ -96,7 +96,7 @@ public abstract class GameActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		saveProperties();
+		PropertiesHandler.saveProperties(this, _props);
 	}
 
 	@Override
@@ -179,7 +179,7 @@ public abstract class GameActivity extends Activity {
 	}
 
 	protected void initBoard() {
-		loadProperties(); // load properties where app state is saved
+		_props = PropertiesHandler.loadProperties(this); // load properties where app state is saved
 		_isSoundEnabled = false;
 		if (_props.containsKey(PROP_SOUND)) {
 			_isSoundEnabled = Boolean.valueOf(_props.getProperty(PROP_SOUND));
@@ -397,51 +397,8 @@ public abstract class GameActivity extends Activity {
 
 	/** reset board, board properties, move counter. */
 	protected void reset() {
-		saveProperties();
+		PropertiesHandler.saveProperties(this, _props);
 		initBoard();
-	}
-
-	/** load the properties file where app state is stored. */
-	private void loadProperties() {
-		_props = new Properties();
-		FileInputStream propsIn = null;
-		try {
-			propsIn = openFileInput(PROPERTY_FILE_NAME);
-			_props.load(propsIn);
-		} catch (FileNotFoundException e) {
-			// property file doesn't exist yet, that's ok
-		} catch (IOException e) {
-			// error while reading input strean (TODO what to do?)
-			throw new RuntimeException(e);
-		} finally {
-			if (propsIn != null) {
-				try {
-					propsIn.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
-
-	/** save the properties file where app state is stored. */
-	protected void saveProperties() {
-		FileOutputStream propsOut = null;
-		try {
-			// create property file not readable by other apps
-			propsOut = openFileOutput(PROPERTY_FILE_NAME, MODE_PRIVATE);
-			_props.store(propsOut, null);
-		} catch (IOException e) {
-			e.printStackTrace(); // TODO can this happen? openFileOutput creates the file if it doesn't exist
-		} finally {
-			if (propsOut != null) {
-				try {
-					propsOut.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
 	}
 
 	private void handleSuccess() {
@@ -456,7 +413,7 @@ public abstract class GameActivity extends Activity {
 		}
 		if (_noOfMoves < oldBest) {
 			_props.setProperty(getPropBestSolution(), String.valueOf(_noOfMoves));
-			saveProperties();
+			PropertiesHandler.saveProperties(this, _props);
 		}
 
 		showSuccessDialog();
