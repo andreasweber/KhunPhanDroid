@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Level7Layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:stretchColumns="1" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/txt_moves7"
+                android:gravity="left"
+                android:textColor="@color/textfarbe"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_best_solution7"
+                android:gravity="right"
+                android:textColor="@color/textfarbe"
+                android:textSize="16sp" />
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/OuterBoardLayout7"
+        android:layout_width="@dimen/outer_width_l2"
+        android:layout_height="@dimen/outer_height_l2"
+        android:layout_gravity="center_horizontal|bottom" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/background_outer2" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/InnerBoardLayout7"
+        android:layout_width="@dimen/inner_width_l2"
+        android:layout_height="@dimen/inner_height_l2"
+        android:layout_gravity="center_horizontal|bottom" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/background_inner2" />
+
+        <View
+            android:id="@+id/L7Piece11_1"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_2"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_3"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_4"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_5"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_6"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_7"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_8"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_9"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_10"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_11"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece11_12"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece1_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece11_pic" >
+        </View>
+
+
+        <View
+            android:id="@+id/L7Piece12_1"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece12_2"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece12_3"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece12_4"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece12_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L7Piece13_1"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece3_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece13_pic" >
+        </View>
+        <View
+            android:id="@+id/L7Piece13_2"
+            android:layout_width="@dimen/piece1_l2"
+            android:layout_height="@dimen/piece3_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece13_pic" >
+        </View>
+
+        <View
+            android:id="@+id/L7Piece22"
+            android:layout_width="@dimen/piece2_l2"
+            android:layout_height="@dimen/piece2_l2"
+            android:layout_gravity="top"
+            android:background="@drawable/piece22_pic" >
+        </View>
+    </FrameLayout>
+
+</FrameLayout>
