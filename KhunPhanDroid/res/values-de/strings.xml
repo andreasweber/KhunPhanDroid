@@ -20,6 +20,8 @@
 <string name="level4_text">Neue Wächter kriechen herum</string>
 <string name="level5_text">An der Barriere vorbei</string>
 <string name="level6_text">Umrahmt von Wächtern</string>
+<string name="level7_text">Entlang der Wachtürme</string>
+<string name="level8_text">Vor und zurück</string>
 
 <string name="menu_exit">Beenden</string>
 <string name="menu_restart">Rücksetzen auf Start</string>

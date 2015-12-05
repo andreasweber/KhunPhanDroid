@@ -27,6 +27,8 @@ public class LevelSelectionActivity extends Activity {
 	private static final String LEVEL_4 = "Level 4";
 	private static final String LEVEL_5 = "Level 5";
 	private static final String LEVEL_6 = "Level 6";
+	private static final String LEVEL_7 = "Level 7";
+	private static final String LEVEL_8 = "Level 8";
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L0 = 20;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 21;
@@ -35,6 +37,8 @@ public class LevelSelectionActivity extends Activity {
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L4 = 24;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L5 = 25;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L6 = 26;
+	private static final int SUB_ACTIVITY_REQUEST_CODE_L7 = 27;
+	private static final int SUB_ACTIVITY_REQUEST_CODE_L8 = 28;
 
 	private List<Map<String, String>> _levelSelectionData;
 
@@ -60,6 +64,8 @@ public class LevelSelectionActivity extends Activity {
 		_intents.put(LEVEL_4, new Intent(this, Level4Activity.class));
 		_intents.put(LEVEL_5, new Intent(this, Level5Activity.class));
 		_intents.put(LEVEL_6, new Intent(this, Level6Activity.class));
+		_intents.put(LEVEL_7, new Intent(this, Level7Activity.class));
+		_intents.put(LEVEL_8, new Intent(this, Level8Activity.class));
 
 		_fromMapKeys = new String[] { "level", "details", "best" };
 		_toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details,
@@ -91,6 +97,10 @@ public class LevelSelectionActivity extends Activity {
 				.getProperty(Level5Activity.PROP_BEST) : "---";
 		final String best6 = props.getProperty(Level6Activity.PROP_BEST) != null ? props
 				.getProperty(Level6Activity.PROP_BEST) : "---";
+		final String best7 = props.getProperty(Level7Activity.PROP_BEST) != null ? props
+				.getProperty(Level7Activity.PROP_BEST) : "---";
+		final String best8 = props.getProperty(Level8Activity.PROP_BEST) != null ? props
+				.getProperty(Level8Activity.PROP_BEST) : "---";
 
 		_levelSelectionData = new ArrayList<Map<String, String>>();
 		add(LEVEL_0, "level0_text", "(" + best0 + ")");
@@ -100,6 +110,8 @@ public class LevelSelectionActivity extends Activity {
 		add(LEVEL_4, "level4_text", "(" + best4 + ")");
 		add(LEVEL_5, "level5_text", "(" + best5 + ")");
 		add(LEVEL_6, "level6_text", "(" + best6 + ")");
+		add(LEVEL_7, "level7_text", "(" + best7 + ")");
+		add(LEVEL_8, "level8_text", "(" + best8 + ")");
 
 		final ListAdapter listAdapter = new SimpleAdapter(this, _levelSelectionData, R.layout.level_selection_row,
 				_fromMapKeys, _toLayoutId);
@@ -127,6 +139,10 @@ public class LevelSelectionActivity extends Activity {
 						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L5);
 					} else if (LEVEL_6.equals(level)) {
 						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L6);
+					} else if (LEVEL_7.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L7);
+					} else if (LEVEL_8.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L8);
 					}
 				}
 			}

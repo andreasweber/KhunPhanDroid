@@ -9,9 +9,10 @@
     <dimen name="outer_height_l1">320dp</dimen>
     <dimen name="outer_width_l1">260dp</dimen>
     
-    <!-- level 2 + 4 + 6 -->
+    <!-- level 2 + 4 + 6 + 7 + 8 -->
     <dimen name="piece1_l2">45dp</dimen>
     <dimen name="piece2_l2">90dp</dimen>
+    <dimen name="piece3_l2">135dp</dimen>
     <dimen name="inner_height_l2">360dp</dimen>
     <dimen name="inner_width_l2">180dp</dimen>
     <dimen name="outer_height_l2">380dp</dimen>

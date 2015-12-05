@@ -1,7 +1,7 @@
 package aweber.phandroid.game;
 
-// X
-// X
+// (X) pos
+//  X
 public class Piece12 extends Piece {
 
 	public Piece12(int xLeft, int yTop) {

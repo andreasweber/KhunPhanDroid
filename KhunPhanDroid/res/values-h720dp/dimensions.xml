@@ -9,6 +9,7 @@
     
     <dimen name="piece1_l2">80dp</dimen>
     <dimen name="piece2_l2">160dp</dimen>
+    <dimen name="piece3_l2">240dp</dimen>
     <dimen name="inner_height_l2">640dp</dimen>
     <dimen name="inner_width_l2">320dp</dimen>
     <dimen name="outer_height_l2">660dp</dimen>
