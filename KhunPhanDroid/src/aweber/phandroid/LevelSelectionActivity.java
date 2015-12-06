@@ -169,7 +169,10 @@ public class LevelSelectionActivity extends Activity {
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L3 && resultCode == Level3Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L4 && resultCode == Level4Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L5 && resultCode == Level5Activity.EXIT_RETURN_CODE)
-				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L6 && resultCode == Level6Activity.EXIT_RETURN_CODE)) {
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L6 && resultCode == Level6Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L7 && resultCode == Level7Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L8 && resultCode == Level8Activity.EXIT_RETURN_CODE)
+				) {
 			setResult(EXIT_RETURN_CODE, null);
 			finish(); // 'Exit' has been chosen in child activity's option menu -> also close parent(=this) activity
 		}
