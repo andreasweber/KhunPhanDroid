@@ -10,8 +10,9 @@
 
     <ExpandableListView
         android:id="@+id/listview_instructions"
+        android:background="@drawable/instructions_list_shape"
         android:groupIndicator="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
