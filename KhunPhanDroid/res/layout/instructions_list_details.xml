@@ -9,7 +9,7 @@
         android:id="@+id/instruction_list_details_text"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:textSize="16sp"
+        android:textSize="@dimen/textsize_help_small"
         android:textColor="@color/instructions_details_text"
         android:paddingTop="5dp"
         android:paddingLeft="5dp"

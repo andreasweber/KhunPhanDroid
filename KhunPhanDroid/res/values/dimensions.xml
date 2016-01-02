@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
- 	<!-- level 0 + 1 -->   
+
+    <dimen name="textsize_startbuttons">20sp</dimen>
+    <dimen name="textsize_levelselection_big">20sp</dimen>
+    <dimen name="textsize_levelselection_small">14sp</dimen>
+    <dimen name="textsize_level_moves">16sp</dimen>
+    <dimen name="textsize_help_big">20sp</dimen>
+    <dimen name="textsize_help_small">16sp</dimen>
+
+    <!-- level 0 + 1 -->
     <dimen name="piece1_l1">60dp</dimen>
     <dimen name="piece2_l1">120dp</dimen>
     <dimen name="inner_height_l1">300dp</dimen>
@@ -19,12 +26,12 @@
     <dimen name="outer_width_l2">200dp</dimen>
     
     <!-- level 3 + 5-->
-    <dimen name="piece1_l3">45dp</dimen>
-    <dimen name="piece2_l3">90dp</dimen>
-    <dimen name="inner_height_l3">315dp</dimen>
-    <dimen name="inner_width_l3">180dp</dimen>
-    <dimen name="outer_height_l3">335dp</dimen>
-    <dimen name="outer_width_l3">200dp</dimen>
+    <dimen name="piece1_l3">50dp</dimen>
+    <dimen name="piece2_l3">100dp</dimen>
+    <dimen name="inner_height_l3">350dp</dimen>
+    <dimen name="inner_width_l3">200dp</dimen>
+    <dimen name="outer_height_l3">370dp</dimen>
+    <dimen name="outer_width_l3">220dp</dimen>
     
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

@@ -16,13 +16,15 @@
                 android:id="@+id/txt_moves6"
                 android:gravity="left"
                 android:textColor="@color/textfarbe"
-                android:textSize="16sp" />
+                android:textSize="@dimen/textsize_level_moves"
+                />
 
             <TextView
                 android:id="@+id/txt_best_solution6"
                 android:gravity="right"
                 android:textColor="@color/textfarbe"
-                android:textSize="16sp" />
+                android:textSize="@dimen/textsize_level_moves"
+                />
         </TableRow>
     </TableLayout>
 

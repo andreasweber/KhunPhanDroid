@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="textsize_startbuttons">23sp</dimen>
+    <dimen name="textsize_levelselection_big">22sp</dimen>
+    <dimen name="textsize_levelselection_small">16sp</dimen>
+    <dimen name="textsize_level_moves">16sp</dimen>
+    <dimen name="textsize_help_big">22sp</dimen>
+    <dimen name="textsize_help_small">18sp</dimen>
+
     <dimen name="piece1_l1">70dp</dimen>
     <dimen name="piece2_l1">140dp</dimen>
     <dimen name="inner_height_l1">350dp</dimen>
@@ -15,10 +23,10 @@
     <dimen name="outer_height_l2">500dp</dimen>
     <dimen name="outer_width_l2">260dp</dimen>
     
-    <dimen name="piece1_l3">60dp</dimen>
-    <dimen name="piece2_l3">120dp</dimen>
-    <dimen name="inner_height_l3">420dp</dimen>
-    <dimen name="inner_width_l3">240dp</dimen>
-    <dimen name="outer_height_l3">440dp</dimen>
-    <dimen name="outer_width_l3">260dp</dimen>
+    <dimen name="piece1_l3">65dp</dimen>
+    <dimen name="piece2_l3">130dp</dimen>
+    <dimen name="inner_height_l3">455dp</dimen>
+    <dimen name="inner_width_l3">260dp</dimen>
+    <dimen name="outer_height_l3">478dp</dimen>
+    <dimen name="outer_width_l3">284dp</dimen>
 </resources>

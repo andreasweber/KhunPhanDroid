@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="textsize_startbuttons">38sp</dimen>
+    <dimen name="textsize_levelselection_big">34sp</dimen>
+    <dimen name="textsize_levelselection_small">22sp</dimen>
+    <dimen name="textsize_level_moves">32sp</dimen>
+    <dimen name="textsize_help_big">34sp</dimen>
+    <dimen name="textsize_help_small">26sp</dimen>
+
+    <dimen name="piece1_l1">120dp</dimen>
+    <dimen name="piece2_l1">240dp</dimen>
+    <dimen name="inner_height_l1">600dp</dimen>
+    <dimen name="inner_width_l1">480dp</dimen>
+    <dimen name="outer_height_l1">620dp</dimen>
+    <dimen name="outer_width_l1">503dp</dimen>
+    
+    <dimen name="piece1_l2">100dp</dimen>
+    <dimen name="piece2_l2">200dp</dimen>
+    <dimen name="piece3_l2">300dp</dimen>
+    <dimen name="inner_height_l2">800dp</dimen>
+    <dimen name="inner_width_l2">400dp</dimen>
+    <dimen name="outer_height_l2">823dp</dimen>
+    <dimen name="outer_width_l2">428dp</dimen>
+    
+    <dimen name="piece1_l3">110dp</dimen>
+    <dimen name="piece2_l3">220dp</dimen>
+    <dimen name="inner_height_l3">770dp</dimen>
+    <dimen name="inner_width_l3">440dp</dimen>
+    <dimen name="outer_height_l3">795dp</dimen>
+    <dimen name="outer_width_l3">470dp</dimen>
+</resources>
