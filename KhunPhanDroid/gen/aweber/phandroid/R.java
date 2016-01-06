@@ -200,7 +200,7 @@ public final class R {
         public static final int button_instructions=0x7f090089;
         public static final int button_level_selection=0x7f09008a;
         public static final int instruction_list_details_text=0x7f090002;
-        public static final int lblListHeader=0x7f090003;
+        public static final int instruction_list_header_text =0x7f090003;
         public static final int level_selection_row_best=0x7f090087;
         public static final int level_selection_row_text=0x7f090086;
         public static final int level_selection_row_text_details=0x7f090088;

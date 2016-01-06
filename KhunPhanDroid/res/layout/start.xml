@@ -16,7 +16,7 @@
 	android:text="@string/button_instructions"
 	android:textSize="@dimen/textsize_startbuttons"
 	android:textColor="@drawable/button_selectable"
-	android:textStyle="bold|italic"
+	android:textStyle="bold"
 	android:onClick="onClickStartInstructions"
 	/>
  <Button 
@@ -30,7 +30,7 @@
 	android:text="@string/button_start_game"
 	android:textSize="@dimen/textsize_startbuttons"
 	android:textColor="@drawable/button_selectable"
-    android:textStyle="bold|italic"
+    android:textStyle="bold"
 	android:onClick="onClickStartLevelSelection"
 	/>
   

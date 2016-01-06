@@ -42,15 +42,16 @@ public class InstructionsExpandableListAdapter extends BaseExpandableListAdapter
 		final String childText = (String) getChild(groupPosition, childPosition);
 
 		if (convertView == null) {
-			LayoutInflater infalInflater = (LayoutInflater) this._context
+			LayoutInflater infalInflater = (LayoutInflater) _context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = infalInflater.inflate(R.layout.instructions_list_details, null);
 		}
 
 		TextView txtListChild = (TextView) convertView.findViewById(R.id.instruction_list_details_text);
-
+		txtListChild.setTypeface(Assets.ttf);
 		txtListChild.setText(childText);
-		return convertView;
+
+        return convertView;
 	}
 
 	@Override
@@ -82,11 +83,11 @@ public class InstructionsExpandableListAdapter extends BaseExpandableListAdapter
 			convertView = infalInflater.inflate(R.layout.instructions_list_group, null);
 		}
 
-		TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
-		lblListHeader.setTypeface(null, Typeface.BOLD);
-		lblListHeader.setText(headerTitle);
+        TextView txtListHeader = (TextView) convertView.findViewById(R.id.instruction_list_header_text);
+		txtListHeader.setTypeface(Assets.ttf, Typeface.BOLD);
+        txtListHeader.setText(headerTitle);
 
-		return convertView;
+        return convertView;
 	}
 
 	@Override

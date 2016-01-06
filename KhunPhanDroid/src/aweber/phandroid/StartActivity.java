@@ -2,9 +2,10 @@ package aweber.phandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-
+import android.widget.Button;
 public class StartActivity extends Activity {
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_I = 13;
@@ -15,7 +16,13 @@ public class StartActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.start);
-	}
+
+        if (Assets.ttf == null) {
+            Assets.ttf = Typeface.createFromAsset(getAssets(), "Peax.ttf");
+        }
+        ((Button) findViewById(R.id.button_instructions)).setTypeface(Assets.ttf);
+        ((Button) findViewById(R.id.button_level_selection)).setTypeface(Assets.ttf);
+    }
 
 	/**
 	 * Called when clicking Instructions-Button

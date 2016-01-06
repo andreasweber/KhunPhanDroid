@@ -15,6 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import aweber.phandroid.game.LevelSelectionAdapter;
 
 public class LevelSelectionActivity extends Activity {
 
@@ -70,9 +73,9 @@ public class LevelSelectionActivity extends Activity {
 		_fromMapKeys = new String[] { "level", "details", "best" };
 		_toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details,
 				R.id.level_selection_row_best };
-		
-		createLevelList();
-	}
+
+        createLevelList();
+    }
 
 	@Override
 	/** overwrite to update level list, cause 'best solution' may have changed. */
@@ -110,14 +113,15 @@ public class LevelSelectionActivity extends Activity {
 		add(LEVEL_4, "level4_text", "(" + best4 + ")");
 		add(LEVEL_5, "level5_text", "(" + best5 + ")");
 		add(LEVEL_6, "level6_text", "(" + best6 + ")");
-		add(LEVEL_7, "level7_text", "(" + best7 + ")");
+		add(LEVEL_7, "level7_text", " (" + best7 + ")");
 		add(LEVEL_8, "level8_text", "(" + best8 + ")");
 
-		final ListAdapter listAdapter = new SimpleAdapter(this, _levelSelectionData, R.layout.level_selection_row,
+		final ListAdapter listAdapter = new LevelSelectionAdapter(this, _levelSelectionData, R.layout.level_selection_row,
 				_fromMapKeys, _toLayoutId);
+
 		final ListView listview = (ListView) findViewById(R.id.listview_level_selection);
-		listview.setAdapter(listAdapter);
-		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listview.setAdapter(listAdapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {

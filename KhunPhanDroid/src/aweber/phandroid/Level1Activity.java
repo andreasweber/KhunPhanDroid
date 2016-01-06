@@ -1,5 +1,8 @@
 package aweber.phandroid;
 
+import android.os.Bundle;
+import android.widget.TextView;
+
 import aweber.phandroid.game.Board;
 import aweber.phandroid.game.BoardPos;
 import aweber.phandroid.game.Piece;
@@ -26,6 +29,13 @@ public class Level1Activity extends GameActivity {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		((TextView)findViewById(R.id.txt_moves)).setTypeface(Assets.ttf);
+		((TextView)findViewById(R.id.txt_best_solution)).setTypeface(Assets.ttf);
 	}
 
 	@Override
