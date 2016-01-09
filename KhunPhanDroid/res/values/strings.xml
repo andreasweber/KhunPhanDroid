@@ -5,6 +5,7 @@
 
 <string name="button_instructions">&lt; Help</string>
 <string name="button_start_game">Play &gt;</string>
+<string name="button_back">Back &gt;</string>
 
 <string name="button_success_retry">Retry same level</string>
 <string name="button_success_back">Try other level</string>

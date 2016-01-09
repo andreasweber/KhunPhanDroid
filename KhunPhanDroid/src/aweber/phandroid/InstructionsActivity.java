@@ -6,8 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -39,7 +42,9 @@ public class InstructionsActivity extends Activity {
 
 		// setting list adapter
 		expListView.setAdapter(listAdapter);
-	}
+
+        ((Button) findViewById(R.id.button_back)).setTypeface(Assets.ttf);
+    }
 
 	private void add(String instructionHeaderId, String instructionTextId) {
 		int idTerm = getResources().getIdentifier(instructionHeaderId, "string", getPackageName());
@@ -51,5 +56,10 @@ public class InstructionsActivity extends Activity {
 		listDataHeader.add(term);
 		listDataChild.put(term, Arrays.asList(text));
 	}
+
+    public void onClickBack(final View v) {
+        setResult(0, null);
+        finish();
+    }
 
 }
