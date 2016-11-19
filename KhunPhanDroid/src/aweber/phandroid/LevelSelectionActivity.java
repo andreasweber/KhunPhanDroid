@@ -32,6 +32,8 @@ public class LevelSelectionActivity extends Activity {
 	private static final String LEVEL_6 = "Level 6";
 	private static final String LEVEL_7 = "Level 7";
 	private static final String LEVEL_8 = "Level 8";
+    private static final String LEVEL_9 = "Level 9";
+    private static final String LEVEL_10 = "Level 10";
 
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L0 = 20;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L1 = 21;
@@ -42,6 +44,8 @@ public class LevelSelectionActivity extends Activity {
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L6 = 26;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L7 = 27;
 	private static final int SUB_ACTIVITY_REQUEST_CODE_L8 = 28;
+    private static final int SUB_ACTIVITY_REQUEST_CODE_L9 = 29;
+    private static final int SUB_ACTIVITY_REQUEST_CODE_L10 = 30;
 
 	private List<Map<String, String>> _levelSelectionData;
 
@@ -69,6 +73,8 @@ public class LevelSelectionActivity extends Activity {
 		_intents.put(LEVEL_6, new Intent(this, Level6Activity.class));
 		_intents.put(LEVEL_7, new Intent(this, Level7Activity.class));
 		_intents.put(LEVEL_8, new Intent(this, Level8Activity.class));
+        _intents.put(LEVEL_9, new Intent(this, Level9Activity.class));
+        _intents.put(LEVEL_10, new Intent(this, Level10Activity.class));
 
 		_fromMapKeys = new String[] { "level", "details", "best" };
 		_toLayoutId = new int[] { R.id.level_selection_row_text, R.id.level_selection_row_text_details,
@@ -104,6 +110,10 @@ public class LevelSelectionActivity extends Activity {
 				.getProperty(Level7Activity.PROP_BEST) : "---";
 		final String best8 = props.getProperty(Level8Activity.PROP_BEST) != null ? props
 				.getProperty(Level8Activity.PROP_BEST) : "---";
+        final String best9 = props.getProperty(Level9Activity.PROP_BEST) != null ? props
+                .getProperty(Level9Activity.PROP_BEST) : "---";
+        final String best10 = props.getProperty(Level10Activity.PROP_BEST) != null ? props
+                .getProperty(Level10Activity.PROP_BEST) : "---";
 
 		_levelSelectionData = new ArrayList<Map<String, String>>();
 		add(LEVEL_0, "level0_text", "(" + best0 + ")");
@@ -115,6 +125,8 @@ public class LevelSelectionActivity extends Activity {
 		add(LEVEL_6, "level6_text", "(" + best6 + ")");
 		add(LEVEL_7, "level7_text", " (" + best7 + ")");
 		add(LEVEL_8, "level8_text", "(" + best8 + ")");
+		add(LEVEL_9, "level9_text", "(" + best9 + ")");
+		add(LEVEL_10, "level10_text", "(" + best10 + ")");
 
 		final ListAdapter listAdapter = new LevelSelectionAdapter(this, _levelSelectionData, R.layout.level_selection_row,
 				_fromMapKeys, _toLayoutId);
@@ -147,7 +159,12 @@ public class LevelSelectionActivity extends Activity {
 						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L7);
 					} else if (LEVEL_8.equals(level)) {
 						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L8);
+					} else if (LEVEL_9.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L9);
+					} else if (LEVEL_10.equals(level)) {
+						startActivityForResult(intent, SUB_ACTIVITY_REQUEST_CODE_L10);
 					}
+
 				}
 			}
 		});
@@ -176,6 +193,8 @@ public class LevelSelectionActivity extends Activity {
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L6 && resultCode == Level6Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L7 && resultCode == Level7Activity.EXIT_RETURN_CODE)
 				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L8 && resultCode == Level8Activity.EXIT_RETURN_CODE)
+				|| (requestCode == SUB_ACTIVITY_REQUEST_CODE_L9 && resultCode == Level9Activity.EXIT_RETURN_CODE)
+                || (requestCode == SUB_ACTIVITY_REQUEST_CODE_L10 && resultCode == Level10Activity.EXIT_RETURN_CODE)
 				) {
 			setResult(EXIT_RETURN_CODE, null);
 			finish(); // 'Exit' has been chosen in child activity's option menu -> also close parent(=this) activity

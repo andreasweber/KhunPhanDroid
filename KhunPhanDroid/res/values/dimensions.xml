@@ -8,7 +8,7 @@
     <dimen name="textsize_help_big">20sp</dimen>
     <dimen name="textsize_help_small">16sp</dimen>
 
-    <!-- level 0 + 1 -->
+    <!-- level 0 + 1 + 9 -->
     <dimen name="piece1_l1">60dp</dimen>
     <dimen name="piece2_l1">120dp</dimen>
     <dimen name="inner_height_l1">300dp</dimen>
@@ -16,7 +16,7 @@
     <dimen name="outer_height_l1">320dp</dimen>
     <dimen name="outer_width_l1">260dp</dimen>
     
-    <!-- level 2 + 4 + 6 + 7 + 8 -->
+    <!-- level 2 + 4 + 6 + 7 + 8 + 10 -->
     <dimen name="piece1_l2">45dp</dimen>
     <dimen name="piece2_l2">90dp</dimen>
     <dimen name="piece3_l2">135dp</dimen>

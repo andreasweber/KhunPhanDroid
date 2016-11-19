@@ -78,6 +78,16 @@
             android:theme="@android:style/Theme.Holo"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".Level9Activity"
+            android:label="Level 9"
+            android:theme="@android:style/Theme.Holo"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Level10Activity"
+            android:label="Level 10"
+            android:theme="@android:style/Theme.Holo"
+            android:screenOrientation="portrait">
+        </activity>
 
     </application>
 

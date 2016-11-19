@@ -23,6 +23,8 @@
 <string name="level6_text">Frame of guards</string>
 <string name="level7_text">All along the watchtowers</string>
 <string name="level8_text">Back and forth</string>
+<string name="level9_text">Back to the roots</string>
+<string name="level10_text">All kinds of guards</string>
 
 <string name="menu_exit">Exit</string>
 <string name="menu_restart">Reset</string>
